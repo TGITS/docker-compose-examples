@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+
+    crdb_1:
+        container_name: crdb_1
+        image: cockroachdb/cockroach:latest
+        hostname: crdb_1
+        volumes:
+          - ./data/crdb_1:/cockroach/cockroach-data
+        command: start --insecure --advertise-addr=crdb_1 --join=crdb_1,crdb_2,crdb_3 --logtostderr
+        ports:
+          - "26257:26257"
+          - "8080:8080"
+        networks:
+            network_cockroachdb:
+                aliases:
+                  - crdb_1
+
+    crdb_2:
+        container_name: crdb_2
+        image: cockroachdb/cockroach:latest
+        hostname: crdb_2
+        volumes:
+          - ./data/crdb_2:/cockroach/cockroach-data
+        command: start --insecure --advertise-addr=crdb_2 --join=crdb_1,crdb_2,crdb_3 --logtostderr
+        networks:
+            network_cockroachdb:
+                aliases:
+                  - crdb_2
+
+    crdb_3:
+        container_name: crdb_3
+        image: cockroachdb/cockroach:latest
+        hostname: crdb_3
+        volumes:
+          - ./data/crdb_3:/cockroach/cockroach-data
+        command: start --insecure --advertise-addr=crdb_3 --join=crdb_1,crdb_2,crdb_3 --logtostderr
+        networks:
+            network_cockroachdb:
+                aliases:
+                  - crdb_3
+
+networks:
+    network_cockroachdb:
+        driver: bridge
