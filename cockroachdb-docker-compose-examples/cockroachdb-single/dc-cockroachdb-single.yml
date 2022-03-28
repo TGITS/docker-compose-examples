@@ -11,10 +11,10 @@ services:
             - "26257:26257"
             - "8080:8080"
         networks:
-            network_cockroachdb:
+            cockroachdb_network:
                 aliases:
                   - crdb
 
 networks:
-    network_cockroachdb:
+    cockroachdb_network:
         driver: bridge

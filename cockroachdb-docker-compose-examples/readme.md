@@ -66,6 +66,25 @@ docker-compose -f dc-cockroachdb-single.yml down
 
 ### Mode cluster
 
+#### Lancement uniquement avec Docker sous Windows
+
+En se basant sur les [explications de la documentation officielle pour lancer avec Docker](https://www.cockroachlabs.com/docs/dev/start-a-local-cluster-in-docker-mac.html) en adaptant juste par rapport à la hiérarchie de répertoires définie dans le projet et en considérant que vous êtes sous Windows.
+
+* Se placer dans le répertoire du projet `cockroachdb-docker-compose-examples\cockroachdb-cluster`
+* Créer un _bridge network_ : `docker network create -d bridge cockroachdb_network`
+* Démarrer un premier noeud : `docker run -d --name=crdb_1 --hostname=crdb_1 --net=cockroachdb_network -p 26257:26257 -p 8080:8080 -v "%cd%/data/crdb_1:/cockroach/cockroach-data" cockroachdb/cockroach:latest start --insecure --advertise-addr=crdb_1 --join=crdb_1,crdb_2,crdb_3`
+* Démarrer un second noeud : `docker run -d --name=crdb_2 --hostname=crdb_2 --net=cockroachdb_network -v "%cd%/data/crdb_2:/cockroach/cockroach-data" cockroachdb/cockroach:latest start --insecure --advertise-addr=crdb_2 --join=crdb_1,crdb_2,crdb_3`
+* Puis démarrer un troisième noeud : `docker run -d --name=crdb_3 --hostname=crdb_3 --net=cockroachdb_network -v "%cd%/data/crdb_3:/cockroach/cockroach-data" cockroachdb/cockroach:latest start --insecure --advertise-addr=crdb_3 --join=crdb_1,crdb_2,crdb_3`
+* Initialiser le cluster : `docker exec -it crdb_1 ./cockroach init --insecure`
+* Affichage des informations de démarrage des différents noeuds
+  * `docker exec -it crdb_1 grep 'node starting' cockroach-data/logs/cockroach.log -A 11`
+  * `docker exec -it crdb_2 grep 'node starting' cockroach-data/logs/cockroach.log -A 11`
+  * `docker exec -it crdb_3 grep 'node starting' cockroach-data/logs/cockroach.log -A 11`
+
+* Pour supprimer le _network_ créé : `docker network rm cockroachdb_network`
+
+#### Avec Docker Compose
+
 Pour lancer CockroachDB en mode cluster, ici avec 3 noeuds, il faut utiliser le fichier `dc-cockroachdb-cluster.yml` :
 
 ```
