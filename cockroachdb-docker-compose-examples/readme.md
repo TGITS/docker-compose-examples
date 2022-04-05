@@ -68,7 +68,7 @@ docker-compose -f dc-cockroachdb-single.yml down
 
 #### Lancement uniquement avec Docker sous Windows
 
-En se basant sur les [explications de la documentation officielle pour lancer avec Docker](https://www.cockroachlabs.com/docs/dev/start-a-local-cluster-in-docker-mac.html) en adaptant juste par rapport à la hiérarchie de répertoires définie dans le projet et en considérant que vous êtes sous Windows.
+En se basant sur les [explications de la documentation officielle pour lancer avec Docker](https://www.cockroachlabs.com/docs/dev/start-a-local-cluster-in-docker-mac.html) en adaptant par rapport à la hiérarchie de répertoires définie dans le projet et en considérant que vous êtes sous Windows.
 
 * Se placer dans le répertoire du projet `cockroachdb-docker-compose-examples\cockroachdb-cluster`
 * Créer un _bridge network_ : `docker network create -d bridge cockroachdb_network`
@@ -155,7 +155,7 @@ CREATE TABLE got.house(id INT PRIMARY KEY, name TEXT UNIQUE, seat TEXT, sigil TE
 Ajout de données dans la table précédemment créée
 
 ```sql
-INSERT INTO got.house VALUES (1, 'Stark', 'Winterfell', 'PAUL', 'A Gray Direwolf', 'Winter is coming');
+INSERT INTO got.house VALUES (1, 'Stark', 'Winterfell', 'A Gray Direwolf', 'Winter is coming');
 INSERT INTO got.house VALUES (2, 'Lannister', 'Casterly Rock', 'A Golden Lion', 'Hear me roar !');
 INSERT INTO got.house VALUES (3, 'Baratheon', 'King''s Landing', 'A Crowned Black Stag', 'Our is the fury !');
 INSERT INTO got.house VALUES (4, 'Greyjoy', 'Pyke', 'A Golden Kraken', 'We do not sow');

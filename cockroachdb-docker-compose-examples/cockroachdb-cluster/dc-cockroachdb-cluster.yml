@@ -12,10 +12,9 @@ services:
           - "26257:26257"
           - "8080:8080"
         networks:
-          - cockroachdb_network
-            # cockroachdb_network:
-            #     aliases:
-            #       - crdb_1
+            cockroachdb_network:
+              aliases:
+                - crdb_1
 
     crdb_2:
         container_name: crdb_2
@@ -25,10 +24,9 @@ services:
           - ./data/crdb_2:/cockroach/cockroach-data
         command: start --insecure --advertise-addr=crdb_2 --join=crdb_1,crdb_2,crdb_3 --logtostderr
         networks:
-          - cockroachdb_network
-            # cockroachdb_network:
-            #     aliases:
-            #       - crdb_2
+          cockroachdb_network:
+            aliases:
+              - crdb_2
 
     crdb_3:
         container_name: crdb_3
@@ -38,10 +36,9 @@ services:
           - ./data/crdb_3:/cockroach/cockroach-data
         command: start --insecure --advertise-addr=crdb_3 --join=crdb_1,crdb_2,crdb_3 --logtostderr
         networks:
-          - cockroachdb_network
-            # cockroachdb_network:
-            #     aliases:
-            #       - crdb_3
+            cockroachdb_network:
+              aliases:
+                - crdb_3
 
 networks:
     cockroachdb_network:
