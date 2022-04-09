@@ -22,9 +22,9 @@ L'option `--build` n'est utile que pour les premiers lancements et vous pouvez v
 docker-compose -f dc-cockroachdb-single.yml up -d
 ```
 
-![Conteneur démarré sous Docker Desktop - 1](cockroachdb-single-docker-desktop-screenshot-1.png "Conteneur démarré sous Docker Desktop - 1")
+![Conteneur démarré sous Docker Desktop - 1](img/cockroachdb-single-docker-desktop-screenshot-1.png "Conteneur démarré sous Docker Desktop - 1")
 
-![Conteneur démarré sous Docker Desktop - 2](cockroachdb-single-docker-desktop-screenshot-2.png "Conteneur démarré sous Docker Desktop - 2")
+![Conteneur démarré sous Docker Desktop - 2](img/cockroachdb-single-docker-desktop-screenshot-2.png "Conteneur démarré sous Docker Desktop - 2")
 
 Pour afficher les logs de démarrage : 
 
@@ -34,17 +34,17 @@ docker exec -it crdb grep 'node starting' /cockroach/cockroach-data/logs/cockroa
 
 Bien sûr avec Docker Desktop vous pouvez directement ouvrir une session sur votre image docker est exécuter la commande directement :
 
-![Affichage des logs de démarrage sous Docker Desktop](cockroachdb-single-docker-desktop-screenshot-3.png "Affichage des logs de démarrage sous Docker Desktop")
+![Affichage des logs de démarrage sous Docker Desktop](img/cockroachdb-single-docker-desktop-screenshot-3.png "Affichage des logs de démarrage sous Docker Desktop")
 
 Vous pouvez ensuite accéder à l'http://localhost:8080/[IHM Web du cluster] à l'URL : http://localhost:8080/
 
-![WebUi de CockroachDB](cockroachdb-single-webui.png "WebUI de CockroachDB")
+![WebUi de CockroachDB](img/cockroachdb-single-webui.png "WebUI de CockroachDB")
 
 CockroachDB utilise le même protocole et la même API que [Postgresql](https://www.postgresql.org/), vous pouvez donc vous connectez dessus depuis un client de base de données qui peut de connecter à Postgresql. Ci-après des copies d'écran de la connexion avec [DBeaver Community](https://dbeaver.io/)
 
-[Connexion de Cockroach à DBeaver - 1](cockroachdb-single-dbeaver-1.png "Connexion de Cockroach à DBeaver - 1")
+[Connexion de Cockroach à DBeaver - 1](img/cockroachdb-single-dbeaver-1.png "Connexion de Cockroach à DBeaver - 1")
 
-[Connexion de Cockroach à DBeaver - 2](cockroachdb-single-dbeaver-2.png "Connexion de Cockroach à DBeaver - 2")
+[Connexion de Cockroach à DBeaver - 2](img/cockroachdb-single-dbeaver-2.png "Connexion de Cockroach à DBeaver - 2")
 
 Pour utiliser le client SQL en ligne de commande de CockroachDB avec un noeud unique on procéder comme suit :
 
@@ -52,11 +52,11 @@ Pour utiliser le client SQL en ligne de commande de CockroachDB avec un noeud un
 docker exec -it crdb ./cockroach sql --insecure
 ```
 
-[Client CLI de Cockroach](cockroachdb-single-cli-client.png "Client CLI de Cockroach")
+[Client CLI de Cockroach](img/cockroachdb-single-cli-client.png "Client CLI de Cockroach")
 
 Vous pouvez également le faire en ouvrant une session directement dans Docker Desktop :
 
-[Client CLI de Cockroach depuis Docker Desktop](cockroachdb-single-cli-client-from-docker-desktop.png "Client CLI de Cockroach depuis Docker Desktop")
+[Client CLI de Cockroach depuis Docker Desktop](img/cockroachdb-single-cli-client-from-docker-desktop.png "Client CLI de Cockroach depuis Docker Desktop")
 
 Enfin, pour arrêter l'instance et le conteneur :
 

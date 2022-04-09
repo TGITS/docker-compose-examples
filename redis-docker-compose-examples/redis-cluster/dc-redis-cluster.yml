@@ -1,18 +1,90 @@
 version: "3.9"
 
 services:
-  redis:
-    container_name: redis
+  redis-1:
+    container_name: redis-1
     image: redis:alpine
+    hostname: redis-1
     ports:
       - 6379:6379
-    environment:
-      - REDIS_REPLICATION_MODE=master
     volumes:
-      - ./redis/data:/var/lib/redis
-      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis-1/data:/var/lib/redis
+      - ./redis-1/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
     networks:
-      - redis_network
+      redis_network:
+        aliases:
+          - redis-1
+  redis-2:
+    container_name: redis-2
+    image: redis:alpine
+    hostname: redis-2
+    ports:
+      - 6380:6380
+    volumes:
+      - ./redis-2/data:/var/lib/redis
+      - ./redis-2/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      redis_network:
+        aliases:
+          - redis-2
+  redis-3:
+    container_name: redis-3
+    image: redis:alpine
+    hostname: redis-3
+    ports:
+      - 6381:6381
+    volumes:
+      - ./redis-3/data:/var/lib/redis
+      - ./redis-3/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      redis_network:
+        aliases:
+          - redis-3
+  redis-4:
+    container_name: redis-4
+    image: redis:alpine
+    hostname: redis-4
+    ports:
+      - 6382:6382
+    volumes:
+      - ./redis-4/data:/var/lib/redis
+      - ./redis-4/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      redis_network:
+        aliases:
+          - redis-4
+  redis-5:
+    container_name: redis-5
+    image: redis:alpine
+    hostname: redis-5
+    ports:
+      - 6383:6383
+    volumes:
+      - ./redis-5/data:/var/lib/redis
+      - ./redis-5/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      redis_network:
+        aliases:
+          - redis-5
+  redis-6:
+    container_name: redis-6
+    image: redis:alpine
+    hostname: redis-6
+    ports:
+      - 6384:6384
+    volumes:
+      - ./redis-6/data:/var/lib/redis
+      - ./redis-6/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      redis_network:
+        aliases:
+          - redis-6
 
 networks:
   redis_network:
