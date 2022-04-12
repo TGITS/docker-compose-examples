@@ -10,9 +10,17 @@ services:
     container_name: postgres
     volumes:
       - postgresql_data:/var/lib/postgresql/data
+    env_file:
+      - .env    
     environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: mydb
-      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
+    networks:
+      - postgres_network
+
+networks:
+  postgres_network:
+    driver: bridge

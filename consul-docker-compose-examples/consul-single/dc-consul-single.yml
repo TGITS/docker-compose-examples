@@ -1,4 +1,5 @@
 version: '3.9'
+
 services:
   consul:
     container_name: consul
@@ -10,3 +11,9 @@ services:
       - "8400:8400"
       - "8500:8500"
       - "8600:53"
+    networks:
+      - consul_network
+
+networks:
+  consul_network:
+    driver: bridge

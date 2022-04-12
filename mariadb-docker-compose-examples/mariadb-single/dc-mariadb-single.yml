@@ -6,10 +6,18 @@ services:
     image: mariadb:10.7.3
     ports:
       - 3306:3306
+    env_file:
+      - .env
     environment:
-      - MYSQL_ROOT_PASSWORD=r00t_p@ssw0rd
-      - MYSQL_PASSWORD=us3r_p@ssword
-      - MYSQL_USER=my_user
-      - MYSQL_DATABASE=my_db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./mariadb/data:/var/lib/mysql
+    networks:
+      - mariadb_network
+
+networks:
+  mariadb_network:
+    driver: bridge
