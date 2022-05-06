@@ -191,3 +191,10 @@
 /rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@cc865ef6deda-feature_flags
 /rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@d0847a6a5485-feature_flags
 /rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/log/*.log
+/rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@9a7ae8bcae8f
+/rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@9a7ae8bcae8f-plugins-expand
+/rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@26c9a11e461a
+/rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@26c9a11e461a-plugins-expand
+/rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@9a7ae8bcae8f-feature_flags
+/rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@26c9a11e461a.pid
+/rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@26c9a11e461a-feature_flags
