@@ -4,16 +4,16 @@
 
 ### Lancement du conteneur avec l'instance RabbitMQ
 
-Pour lancer le conteneur et l'instance RabbitMQ avec docker-compose : 
+Pour lancer le conteneur et l'instance RabbitMQ avec _docker compose_ : 
 
 ```
-docker-compose -f dc-rabbitmq-single.yml up -d
+docker compose -f dc-rabbitmq-single.yml up -d
 ```
 
 ### Arrêt du conteneur
 
 ```
-docker-compose -f dc-rabbitmq-single.yml down
+docker compose -f dc-rabbitmq-single.yml down
 ```
 
 ## Mode cluster

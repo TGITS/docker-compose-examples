@@ -4,10 +4,10 @@
 
 ### Lancement du conteneur avec l'instance Postgresql
 
-Pour lancer le conteneur avec l'instance Postgresql en utilisant docker-compose :
+Pour lancer le conteneur avec l'instance Postgresql en utilisant _docker compose_ :
 
 ```
-docker-compose -f dc-postgresql-single.yml up -d
+docker compose -f dc-postgresql-single.yml up -d
 ```
 
 Pour se connecter sur l'instance avec la CLI depuis un shell sur le conteneur : `psql -W -Umydb -dmydb`. Aver l'option `-W` vous aurez un prompt pour saisir le mot de passe.
@@ -19,7 +19,7 @@ Pour se connecter sur l'instance avec la CLI depuis un shell sur le conteneur : 
 Pour arrêter le conteneur :
 
 ```
-docker-compose -f dc-postgresql-single.yml down
+docker compose -f dc-postgresql-single.yml down
 ```
 
 ## Mode Cluster

@@ -7,7 +7,7 @@
 Pour lancer Consul, il suffit de lancer le conteneur avec le fichier docker-compose.
 
 ```
-docker-compose -f dc-consul-single.yml up -d
+docker compose -f dc-consul-single.yml up -d
 ```
 
 Si vous pointez votre navigateur sur `http://localhost:8500` ou sur `http://localhost:8500/ui` vous devriez être redirigés vers `http://localhost:8500/ui/dc1/services` et avoir un affichage similaire à ce qui suit.
@@ -19,7 +19,7 @@ Si vous pointez votre navigateur sur `http://localhost:8500` ou sur `http://loca
 Pour arrêter le conteneur :
 
 ```
-docker-compose -f dc-consul-single.yml down
+docker compose -f dc-consul-single.yml down
 ```
 
 ## Mode cluster

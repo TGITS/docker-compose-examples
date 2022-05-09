@@ -4,10 +4,10 @@
 
 ### Lancement du conteneur avec l'instance MariaDB
 
-Pour lancer l'instance MariaDB avec docker-compose :
+Pour lancer l'instance MariaDB avec _docker compose_ :
 
 ```
-docker-compose -f dc-mariadb-single.yml up -d
+docker compose -f dc-mariadb-single.yml up -d
 ```
 
 En ouvrant un shell sur le conteneur, on peut essayer de se connecter à MariaDB pour voir si tout est opérationnel : `mysql -u my_user -pus3r_p@ssword my_db`
@@ -19,7 +19,7 @@ En ouvrant un shell sur le conteneur, on peut essayer de se connecter à MariaDB
 Pour arrêter le conteneur et la base :
 
 ```
-docker-compose -f dc-mariadb-single.yml down
+docker compose -f dc-mariadb-single.yml down
 ```
 
 ## Mode cluster
