@@ -13,13 +13,13 @@ Il va sans dire que vous avez besoin d'avoir [Docker Compose](https://docs.docke
 Pour lancer CockroachDB avec seul noeud, il faut utiliser le fichier `dc-cockroachdb-single.yml` :
 
 ```
-docker-compose -f dc-cockroachdb-single.yml up -d --build
+docker compose -f dc-cockroachdb-single.yml up -d --build
 ```
 
 L'option `--build` n'est utile que pour les premiers lancements et vous pouvez vous en passer lors des lancements suivants :
 
 ```
-docker-compose -f dc-cockroachdb-single.yml up -d
+docker compose -f dc-cockroachdb-single.yml up -d
 ```
 
 ![Conteneur démarré sous Docker Desktop - 1](img/cockroachdb-single-docker-desktop-screenshot-1.png "Conteneur démarré sous Docker Desktop - 1")
@@ -61,7 +61,7 @@ Vous pouvez également le faire en ouvrant une session directement dans Docker D
 Enfin, pour arrêter l'instance et le conteneur :
 
 ```
-docker-compose -f dc-cockroachdb-single.yml down
+docker compose -f dc-cockroachdb-single.yml down
 ```
 
 ### Mode cluster
@@ -88,13 +88,13 @@ En se basant sur les [explications de la documentation officielle pour lancer av
 Pour lancer CockroachDB en mode cluster, ici avec 3 noeuds, il faut utiliser le fichier `dc-cockroachdb-cluster.yml` :
 
 ```
-docker-compose -f dc-cockroachdb-cluster.yml up -d --build
+docker compose -f dc-cockroachdb-cluster.yml up -d --build
 ```
 
 Comme pour le mode mono-noeud, l'option `--build` n'est utile que pour les premiers lancements.
 
 ```
-docker-compose -f dc-cockroachdb-cluster.yml up -d --build
+docker compose -f dc-cockroachdb-cluster.yml up -d --build
 ```
 
 Une fois les noeuds lancés, il faut initialiser le cluster : 
@@ -121,7 +121,7 @@ docker exec -it crdb_1 ./cockroach sql --insecure
 Pour arrêter le cluster il faut lancer :
 
 ```
-docker-compose -f dc-cockroachdb-cluster.yml down
+docker compose -f dc-cockroachdb-cluster.yml down
 ```
 
 ## Interactions avec la base en utilisant le client en ligne de commande

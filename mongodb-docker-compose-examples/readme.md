@@ -4,10 +4,10 @@
 
 ### Lancement du conteneur avec l'instance MongoDB
 
-Pour lancer le conteneur et l'instance MongoDB avec docker-compose : 
+Pour lancer le conteneur et l'instance MongoDB avec _docker compose_ : 
 
 ```
-docker-compose -f dc-mongodb-single.yml up -d
+docker compose -f dc-mongodb-single.yml up -d
 ```
 
 Pour vérifier que tout est ok, il est possible d'ouvrir un shell sur le conteneur et de se connecter à l'instance avec la cli en lançant `mongo`.
@@ -17,7 +17,7 @@ Pour vérifier que tout est ok, il est possible d'ouvrir un shell sur le contene
 ### Arrêt du conteneur
 
 ```
-docker-compose -f dc-mongodb-single.yml down
+docker compose -f dc-mongodb-single.yml down
 ```
 
 ## Mode cluster

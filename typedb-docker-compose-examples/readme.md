@@ -12,10 +12,10 @@ docker run --name typedb -d -v ./typedb/data:/typedb-all-linux/server/data/ -p 1
 
 ### Lancement du conteneur
 
-Pour lancer l'instance TypeDB avec docker-compose :
+Pour lancer l'instance TypeDB avec _docker compose_ :
 
 ```
-docker-compose -f dc-typedb-single.yml up -d
+docker compose -f dc-typedb-single.yml up -d
 ```
 
 En ouvrant un shell sur le conteneur, on peut essayer de se connecter à MariaDB pour voir si tout est opérationnel : `/opt/typedb-all-linux/typedb console`
@@ -27,7 +27,7 @@ En ouvrant un shell sur le conteneur, on peut essayer de se connecter à MariaDB
 Pour arrêter le conteneur et la base :
 
 ```
-docker-compose -f dc-typedb-single.yml down
+docker compose -f dc-typedb-single.yml down
 ```
 
 ## Clients

@@ -5,13 +5,13 @@
 ### Lancement du conteneur avec l'instance Redis
 
 ```
-docker-compose -f dc-redis-single.yml up -d
+docker compose -f dc-redis-single.yml up -d
 ```
 
 ### Arrêt du conteneur
 
 ```
-docker-compose -f dc-redis-single.yml down
+docker compose -f dc-redis-single.yml down
 ```
 
 ## Mode cluster
@@ -19,7 +19,7 @@ docker-compose -f dc-redis-single.yml down
 ### Lancement du conteneur avec les instances pour le cluster Redis
 
 ```
-docker-compose -f dc-redis-cluster.yml up -d
+docker compose -f dc-redis-cluster.yml up -d
 ```
 
 ### Création du cluster
@@ -35,7 +35,7 @@ Puis création du cluster avec le client Redis en ligne de commande : `redis-cli
 ### Arrêt du conteneur
 
 ```
-docker-compose -f dc-redis-cluster.yml down
+docker compose -f dc-redis-cluster.yml down
 ```
 
 
