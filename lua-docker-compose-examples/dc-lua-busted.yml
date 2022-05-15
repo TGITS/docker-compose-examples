@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  busted:
+    container_name: busted
+    image: imega/busted
+    volumes:
+      - ./data:/data

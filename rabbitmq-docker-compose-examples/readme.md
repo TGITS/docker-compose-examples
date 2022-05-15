@@ -90,6 +90,23 @@ Les valeurs à renseigner pour le `Username` et le `Password` sont les valeurs q
 
 !["Interface Web d'administration de RabbitMQ"](./img/webui-administration-rabbitmq.png "Interface Web d'administration de RabbitMQ")
 
+## WSL
+
+Lors d'un lancement depuis WSL, pour pouvoir accéder aux ports de RabbitMQ depuis windows il faut lancer le script suivant :
+
+```powershell
+$wslIp=(wsl -d Ubuntu -e sh -c "ip addr show eth0 | grep 'inet\b' | awk '{print `$2}' | cut -d/ -f1") # Get the private IP of the WSL2 instance
+
+netsh interface portproxy delete v4tov4 listenport="15672" # Delete any existing port 15672 forwarding
+netsh interface portproxy add v4tov4 listenport="15672" connectaddress="$wslIp" connectport="15672"
+
+netsh interface portproxy delete v4tov4 listenport="5672" # Delete any existing port 5672 forwarding
+netsh interface portproxy add v4tov4 listenport="5672" connectaddress="$wslIp" connectport="5672"
+
+netsh interface portproxy delete v4tov4 listenport="15692" # Delete any existing port 15692 forwarding
+netsh interface portproxy add v4tov4 listenport="15692" connectaddress="$wslIp" connectport="15692"
+```
+
 ## Ressources
 
 **TODO**
