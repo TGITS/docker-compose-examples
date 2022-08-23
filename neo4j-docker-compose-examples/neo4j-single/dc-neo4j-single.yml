@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+      - ./import:/var/lib/neo4j/import
+      - ./logs:/logs
+      - ./plugins:/plugins
+    env_file:
+      - .env    
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH}
+      NEO4J_dbms_connector_https_advertised__address: ${NEO4J_dbms_connector_https_advertised__address}
+      NEO4J_dbms_connector_http_advertised__address: ${NEO4J_dbms_connector_http_advertised__address}
+      NEO4J_dbms_connector_bolt_advertised__address: ${NEO4J_dbms_connector_bolt_advertised__address}
+    ports:
+      - 7473:7473
+      - 7474:7474
+      - 7687:7687
+    networks:
+      - neo4j_network
+
+networks:
+  neo4j_network:
+    driver: bridge

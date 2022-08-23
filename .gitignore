@@ -198,3 +198,8 @@
 /rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@9a7ae8bcae8f-feature_flags
 /rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@26c9a11e461a.pid
 /rabbitmq-docker-compose-examples/rabbitmq-single/rabbitmq/data/rabbit@26c9a11e461a-feature_flags
+/neo4j-docker-compose-examples/neo4j-single/logs/*.log
+/neo4j-docker-compose-examples/neo4j-single/data/server_id
+/neo4j-docker-compose-examples/neo4j-single/data/databases
+/neo4j-docker-compose-examples/neo4j-single/data/dbms
+/neo4j-docker-compose-examples/neo4j-single/data/transactions
