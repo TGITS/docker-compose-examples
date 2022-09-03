@@ -10,7 +10,7 @@ Pour lancer le conteneur avec l'instance Postgresql en utilisant _docker compose
 docker compose -f dc-postgresql-single.yml up -d
 ```
 
-Pour se connecter sur l'instance avec la CLI depuis un shell sur le conteneur : `psql -W -Umydb -dmydb`. Aver l'option `-W` vous aurez un prompt pour saisir le mot de passe.
+Pour se connecter sur l'instance avec la CLI depuis un shell sur le conteneur : `psql -W -Umydb -dmydb`. Avec l'option `-W` vous aurez un prompt pour saisir le mot de passe.
 
 ![Connexion à Postgresql avec la CLI depuis un shell sur le conteneur](./img/screenshot-connexion-avec-cli-postgresql.png "Connexion à Postgresql avec la CLI depuis un shell sur le conteneur")
 
