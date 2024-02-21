@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.7.3
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - ./mariadb/data:/var/lib/mysql
+    networks:
+      - mariadb_network
+
+networks:
+  mariadb_network:
+    driver: bridge
