@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  typedb:
+    container_name: typedb
+    image: vaticle/typedb:latest
+    ports:
+      - 1729:1729
+    volumes:
+      - ./typedb/data:/typedb-all-linux/server/data/
+    networks:
+      - typedb_network
+
+networks:
+  typedb_network:
+    driver: bridge
