@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  redis:
+    container_name: redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    volumes:
+      - ./redis/data:/var/lib/redis
+      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis_network
+
+networks:
+  redis_network:
+    driver: bridge
