@@ -20,10 +20,6 @@ Pour vérifier que tout est ok, il est possible d'ouvrir un shell sur le contene
 docker compose -f dc-mongodb-single.yml down
 ```
 
-## Mode cluster
-
-**TODO**
-
 ## Clients
 
 ### CLI
