@@ -5,7 +5,6 @@ services:
     image: mongo:latest
     container_name: mongodb
     hostname: mongodb
-    #restart: always
     volumes:
       - ./mongodb/initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - mongodb-data:/data/db/
