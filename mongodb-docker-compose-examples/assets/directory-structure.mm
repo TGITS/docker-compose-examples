@@ -91,7 +91,7 @@
 <node TEXT="" ID="ID_238102398" CREATED="1708702398447" MODIFIED="1708702398450">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="JSON file that initialize the mongodb instance with data" ID="ID_1948762647" CREATED="1708702398451" MODIFIED="1708702439895"/>
+<node TEXT="JSON file that initializes the mongodb instance with data" ID="ID_1948762647" CREATED="1708702398451" MODIFIED="1708797507395"/>
 </node>
 </node>
 </node>
@@ -134,7 +134,7 @@
 <node TEXT="" POSITION="bottom_or_right" ID="ID_561582841" CREATED="1708702530452" MODIFIED="1708702530454">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="Pictures used by the README files" ID="ID_1797188113" CREATED="1708702530458" MODIFIED="1708702545215"/>
+<node TEXT="Pictures used by the README file" ID="ID_1797188113" CREATED="1708702530458" MODIFIED="1708797495531"/>
 </node>
 <node TEXT="" POSITION="bottom_or_right" ID="ID_1290367073" CREATED="1708702313274" MODIFIED="1708702313274">
 <hook NAME="FirstGroupNode"/>
@@ -145,18 +145,7 @@
 <node TEXT="" POSITION="bottom_or_right" ID="ID_123759240" CREATED="1708702313272" MODIFIED="1708702313274">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="README file (English version)" ID="ID_376695135" CREATED="1708702313276" MODIFIED="1708702325713"/>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_1012458539" CREATED="1708702288669" MODIFIED="1708702288669">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="README_FR.md" POSITION="bottom_or_right" ID="ID_1931839840" CREATED="1708702176890" MODIFIED="1708702797721">
-<font SIZE="14"/>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_1897394966" CREATED="1708702288666" MODIFIED="1708702288669">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="French version of the readme" ID="ID_715315061" CREATED="1708702288670" MODIFIED="1708702304951"/>
+<node TEXT="README file" ID="ID_376695135" CREATED="1708702313276" MODIFIED="1708797486633"/>
 </node>
 </node>
 </map>

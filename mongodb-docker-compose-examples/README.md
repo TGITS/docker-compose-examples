@@ -1,6 +1,6 @@
 # MongoDB
 
-This small project provides a docker compose file and a directory structure that create a local environment for mongodb that can be used for developement and experimentation purposes.
+This small project provides a _docker compose file_ and a minimalist directory structure that creates a local environment for the [MongoDB](https://www.mongodb.com/) database to be used for developement and experimentation.
 Do not use this directly in a production enviroment or at your own risk !
 Two containers are provided :
 
@@ -12,9 +12,9 @@ However it should work on Windows, Mac and Linux, with Docker, Docker Desktop or
 
 In all cases you need to have a container engine compatible with docker and `docker compose` available in the command line.
 
-With MongoDB, on the container, [MongoDB Shell](https://www.mongodb.com/try/download/shell) is available. However, you can install it directly on your laptop to access any MongoDB instance accessible on your network if you wish so.
+On the container with the [MongoDB](https://www.mongodb.com/) database engine, there is also [MongoDB Shell](https://www.mongodb.com/try/download/shell). However, you can install it directly on your PC to access any MongoDB instances accessible on your network if you wish so.
 
-You can also install and use [Compass](https://www.mongodb.com/products/tools/compass). Compass is graphical client to connect to MongoDB instances.
+You can also install and use [Compass](https://www.mongodb.com/products/tools/compass). Compass is a graphical client to connect to MongoDB instances.
 
 ## Running the containers with the MongoDB instance
 
@@ -24,13 +24,13 @@ To run the containers and the associated **MongoDB** instance with `docker compo
 docker compose -f dc-mongodb-single.yml up -d
 ```
 
-## Accessing MongoDB with the CLI in the container
-
 ![Running docker compose with the dc-mongodb-single.yml](./pics/simple-docker-compose-4-single-node-mongodb-001.png "Running docker compose with the dc-mongodb-single.yml")
 
 In Docker Desktop, Rancher Desktop or Podman Desktop you should be able to see the container running (in the following screenshot it is with Podman Desktop).
 
 ![The container running with Podman Desktop](./pics/simple-docker-compose-4-single-node-mongodb-002.png "The container running with Podman Desktop")
+
+### Accessing MongoDB with the CLI in the container
 
 To check that all is ok, you can open a shell on the container and connect to the MongoDB instance with the CLI by running `mongosh` as described thereafter :
 
@@ -41,9 +41,9 @@ To check that all is ok, you can open a shell on the container and connect to th
 
 ![Connection to MongoDB with the CLI from a shell open on the container](./pics/simple-docker-compose-4-single-node-mongodb-003.png "Connection to MongoDB with the CLI from a shell open on the container")
 
-* To be connected as the user defined in the `mongo-init.js` file (`jon_snow`)
+* To be connected as the user defined in the `mongo-init.js` file (`jon_snow`) :
   * `mongosh got_db -u "jon_snow" -p`
-    * You has then to type the password for the user `jon_snow` in the `mongo-init.js` file (the password is `ygritte` by the way)
+    * You has then to type the password specified for the user `jon_snow` in the `mongo-init.js` file (the password is `ygritte` by the way)
   * You can express a query against the database : `db.got_seasons_collection.find({}, { season : 1, year : 1 })`
 
 ![Connection to MongoDB with the CLI from a shell open on the container](./pics/simple-docker-compose-4-single-node-mongodb-003.png "Connection to MongoDB with the CLI from a shell open on the container")
@@ -54,17 +54,25 @@ If you want to stop the containers, you just have to execute in the command line
 docker compose -f dc-mongodb-single.yml down
 ```
 
-## Accessing MongoDB with mongo-express
+### Accessing MongoDB with mongo-express
+
+You have to access with your browser on the url `http:\\localhost:8081`. You will be prompted to enter a login and a password : you type the value défined for `MONGO_EXPRESS_USERNAME` and `MONGO_EXPRESS_PASSWORD` in the `.env` file.
+
+![Connection to mongo-express - basic authentication popup](./pics/mongo-express-connection-001.png "Connection to mongo-express - basic authentication popup")
+
+You then have access to the `mongo-express` Web UI connected to your local MongoDB instance.
+
+![Connection to mongo-express](./pics/mongo-express-connection-002.png "Connection to mongo-express")
 
 ## Installing MongoDB Shell on your computer and using it to connect to the MongoDB instance
 
 You can download and install [Mongosh](https://www.mongodb.com/try/download/shell) directly on you PC.
 It is available as a zip archive, you just have to unzip it wherever it suits you and add the bin directory with the `mongosh` executable in you path.
-You then should be able to connect with mongosh to any instance of MongoDB if you provides the correct parameters.
+You then should be able to connect with `mongosh` to any instance of MongoDB if you provides the correct parameters.
 If you just type `mongosh` in a terminal, by default it will try to connect to a MongoDB instance on `127.0.0.1` and port `27017`.
 If your instance is up it will connect to it but you cannot do much because you will not be authenticated.
 
-![Connecting to MongoDB with mongosh with providing any parameters](./pics/mongosh-from-terminal-001.png "Connecting to MongoDB with mongosh with providing any parameters")
+![Connecting to MongoDB with mongosh with providing any parameters](./pics/mongosh-from-terminal-001.png "Connecting to MongoDB with mongosh without providing any parameters")
 
 So if we want to authenticate as user `jon_snow` which has rights on the database `got_db`, first we will switch to this database and then authenticate within the shell :
 
@@ -72,6 +80,8 @@ So if we want to authenticate as user `jon_snow` which has rights on the databas
 use got_db
 db.auth("jon_snow", "ygritte")
 ```
+
+You are now connected as user `jon_snow` and can express query against the database (for exeample `db.got_seasons_collection.find({}, { season : 1, year : 1 })`).
 
 ## Installing Compass and using it to accessing MongoDB
 
@@ -93,7 +103,7 @@ You can now connect directly or save the connection to not have to type the info
 
 ## Some explanations
 
-Some explanations about the docker-compose file, the directory structure and the initialisation data.
+Some explanations about the _docker compose file_, the directory structure and the initialisation data.
 
 ### Directory structure
 
@@ -103,7 +113,7 @@ Some explanations about the docker-compose file, the directory structure and the
 
 ![The docker-compose file](./pics/docker-compose-file.png "The docker-compose file")
 
-### Initialisation
+### Data initialization
 
 ## Ressources
 
