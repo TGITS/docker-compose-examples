@@ -1,16 +1,16 @@
 # MongoDB
 
-This small project provides a _docker compose file_ and a minimalist directory structure that creates a local environment for the [MongoDB](https://www.mongodb.com/) database to be used for developement and experimentation.
+This [small project](https://github.com/TGITS/docker-compose-examples) provides a _docker compose file_ and a minimalist directory structure that creates a local environment for the [MongoDB](https://www.mongodb.com/) database to be used for development and experimentation.
 Do not use this directly in a production enviroment or at your own risk !
-Two containers are provided :
+Two applications are provided by the _docker compose file_:
 
-* One which runs a MongoDB single instance
-* One which runs [mongo-express](https://github.com/mongo-express/mongo-express) which is a web-based MongoDB administration interface.
+* A MongoDB single instance
+* [mongo-express](https://github.com/mongo-express/mongo-express) which is a web-based MongoDB administration interface.
 
-This project has been developed and tested under Windows 11 Professional with Podman and Podman Desktop.
-However it should work on Windows, Mac and Linux, with Docker, Docker Desktop or Rancher Desktop.
+This project has been developed and tested under Windows 11 Professional with [Podman](https://podman.io/) and Podman Desktop.
+However it should work on Windows, Mac and Linux, with [Docker](https://www.docker.com/), [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Rancher Desktop](https://rancherdesktop.io/).
 
-In all cases you need to have a container engine compatible with docker and `docker compose` available in the command line.
+In all cases you need to have a container engine compatible with `docker` and `docker compose` available in the command line.
 
 On the container with the [MongoDB](https://www.mongodb.com/) database engine, there is also [MongoDB Shell](https://www.mongodb.com/try/download/shell). However, you can install it directly on your PC to access any MongoDB instances accessible on your network if you wish so.
 
@@ -101,21 +101,149 @@ You can now connect directly or save the connection to not have to type the info
 
 ![Connected to the local instance](./pics/mongo-compass-003.png "Connecting to the local instance")
 
-## Some explanations
+## Inner Workings
 
-Some explanations about the _docker compose file_, the directory structure and the initialisation data.
-
-### Directory structure
+The  main directories and files of this project are quickly presented in the following pictures.
 
 ![The directory structure with some comments](./pics/directory-structure.jpg "The directory structure with some comments")
 
-### Docker compose file
+The following image gives a synthetic view of the docker compose file.
 
-![The docker-compose file](./pics/docker-compose-file.png "The docker-compose file")
+![The docker compose file](./pics/docker-compose-file.png "The docker-compose file")
 
-### Data initialization
+The `.env` file defined some system variables used in the docker compose file :
 
-## Ressources
+```yaml
+MONGO_INITDB_ROOT_USERNAME=root
+MONGO_INITDB_ROOT_PASSWORD=password
+MONGO_EXPRESS_USERNAME=admin
+MONGO_EXPRESS_PASSWORD=password
+```
+
+You can of course change the value to your liking if necessary.
+
+The docker compose file is quite simple and straightforward.
+
+```yaml
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    hostname: mongodb
+    volumes:
+      - ./mongodb/initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongodb-data:/data/db/
+      - mongodb-log:/var/log/mongodb/
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "27017:27017"
+    networks:
+      - mongodb_network
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_SERVER: 'mongodb'
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASSWORD}
+    ports:
+      - 8081:8081
+    networks:
+      - mongodb_network
+    depends_on:
+      - mongodb
+
+volumes:
+  mongodb-data:
+    driver: local
+    name: mongo-data
+  mongodb-log:
+    driver: local
+    name: mongo-log
+
+networks:
+  mongodb_network:
+    driver: bridge
+    name: mongo-network
+```
+
+Two services are defined, one for `mongodb` and one for `mongo-express`.
+In each case, the image retrieved is the `latest`.
+You can (and in some case you should) change to point to a specific version of `MongoDB` or `mongo-express`.
+A network and two volumes are defined.
+The file `mongo-init.js` is mapped to a specific file inside the container.
+You can note the `:ro` which means the volume is only readonly.
+This file creates a database, a user with read et write rights on it and a collection in it, populated with some data (the list of episodes of the TV Show **A Game of Thrown**).
+
+Of course, you can customize this initialization file to you specific use case, or event get rid of it if need be (in this case do not forget to delete the line `- ./mongodb/initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro`).
+
+```json
+db = db.getSiblingDB("got_db");
+
+db.createUser({
+    user: "jon_snow",
+    pwd: "ygritte",
+    roles: [
+      {
+        role: 'readWrite', 
+        db: 'got_db'
+      },
+    ],
+  });
+
+db.createCollection("got_seasons_collection");
+
+db.got_seasons_collection.insertMany([
+  {
+    season: "1",
+    year: "2011",
+    episodes: [
+      {
+        number_overall: "1",
+        number_in_season: "1",
+        title: "Winter Is Coming",
+        directors: ["Tim Van Patten"],
+        writers: ["David Benioff", "D. B. Weiss"],
+        original_air_date: "April 17, 2011",
+        number_us_viewers: "2.22",
+      },
+      ...
+      {
+        number_overall: "73",
+        number_in_season: "6",
+        title: "The Iron Throne",
+        directors: ["David Benioff", "D. B. Weiss"],
+        writers: ["David Benioff", "D. B. Weiss"],
+        original_air_date: "May 19, 2019",
+        number_us_viewers: "13.61",
+      },
+    ],
+  },
+]);      
+```
+
+With all this you should have a base for a local development environment for MongoDB, that you can customize when need be.
+It's up to you now to explore MongoDB with it.
+
+## Bibliography
 
 * [Documentation](https://www.mongodb.com/docs/) on the [official MongoDB site](https://www.mongodb.com/)
-* [db.auth()](https://www.mongodb.com/docs/manual/reference/method/db.auth/)
+  * [db.auth()](https://www.mongodb.com/docs/manual/reference/method/db.auth/)
+  * [Docker and MongoDB](https://www.mongodb.com/compatibility/docker)
+* [MongoDB Official Docker Image](https://hub.docker.com/_/mongo)
+* [mongo-express official image](https://hub.docker.com/_/mongo-express)
+* [How to Run MongoDB as a Docker Container?](https://www.geeksforgeeks.org/how-to-run-mongodb-as-a-docker-container/)
+* [Quick MongoDB Docker Setup](https://cj-hewett.medium.com/quick-mongodb-docker-setup-d1959c8fc8f2)
+* [Docker: Initialize custom users and databases in MongoDb](https://dev.to/mikelogaciuk/docker-initialize-custom-users-and-databases-in-mongodb-3dkb)
+* [How to Run an Init Script for MongoDB in Docker Container](https://becomegeeks.com/blog/how-to-run-an-init-script-for-mongodb-in-docker-container/)
