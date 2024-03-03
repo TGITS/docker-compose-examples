@@ -203,3 +203,4 @@
 /neo4j-docker-compose-examples/neo4j-single/data/databases
 /neo4j-docker-compose-examples/neo4j-single/data/dbms
 /neo4j-docker-compose-examples/neo4j-single/data/transactions
+/mongodb-docker-compose-examples/assets/*.odg#
