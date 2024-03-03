@@ -101,6 +101,22 @@ You can now connect directly or save the connection to not have to type the info
 
 ![Accessing a database in the local instance](./pics/mongo-compass-003.png "Accessing a database in the local instance")
 
+## Installing Visual Studio Code Plugin
+
+If you use Visual Studio Code you can install [an official extension](https://www.mongodb.com/products/tools/vs-code) that allows you to access a MongoDB instance.
+
+![MongoDB for VS Code](./pics/vs-code-mongodb-extension-001.png "MongoDB for VS Code")
+
+When you have installed the extension, you just need to connect to your instance.
+
+![Accessing the plugin to create a new connection](./pics/vs-code-mongodb-extension-002.png "Accessing the plugin to create a new connection")
+
+![Configuring the connection (with Advanced Connection settings)](./pics/vs-code-mongodb-extension-003.png "Configuring the connection (with Advanced Connection settings)")
+
+![Accessing the documents in the instance](./pics/vs-code-mongodb-extension-004.png "Accessing the documents in the instance")
+
+The complete documentation of this plugin can be found on the [official site](https://www.mongodb.com/docs/mongodb-vscode/).
+
 ## Inner Workings
 
 The  main directories and files of this project are quickly presented in the following pictures.
@@ -233,8 +249,10 @@ db.got_seasons_collection.insertMany([
 ]);      
 ```
 
-With all this you should have a base for a local development environment for MongoDB, that you can customize when need be.
-It's up to you now to explore MongoDB with it.
+![The details of the file to initialize the instance](./pics/mongo-initialization-file.png "The details of the file to initialize the instance")
+
+With all this you should have a base for a local development environment for MongoDB, that you can customize if you need to.
+It's now up to you to explore MongoDB with it.
 
 ## Bibliography
 
