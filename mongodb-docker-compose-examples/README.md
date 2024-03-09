@@ -251,6 +251,12 @@ db.got_seasons_collection.insertMany([
 
 ![The details of the file to initialize the instance](./pics/mongo-initialization-file.png "The details of the file to initialize the instance")
 
+If you really do not want to have an initial user, database and collection created with your MongoDB instance, you can use `mongodb-empty-single/dc-mongodb-empty-single.yml` instead of `mongodb-single/dc-mongodb-single.yml` : the working principles are identical, there is just no initialization of the instance with data.
+
+```txt
+docker compose -f dc-mongodb-empty-single.yml up -d
+```
+
 With all this you should have a base for a local development environment for MongoDB, that you can customize if you need to.
 It's now up to you to explore MongoDB with it.
 
