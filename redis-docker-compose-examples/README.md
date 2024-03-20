@@ -94,3 +94,5 @@ netsh interface portproxy add v4tov4 listenport="6384" connectaddress="$wslIp" c
 * [Redis cluster specification](https://redis.io/docs/reference/cluster-spec/)
 * [docker-redis-cluster](https://github.com/Grokzen/docker-redis-cluster)
 * [How to Setup & Configure a Redis Cluster Easily](https://www.dltlabs.com/blog/how-to-setup-configure-a-redis-cluster-easily-573120)
+
+docker compose -f dc-redis-single.yml up -d

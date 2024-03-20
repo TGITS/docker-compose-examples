@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  redis:
+    container_name: redis
+    image: redis/redis-stack:latest
+    ports:
+      - 6379:6379
+      - 8001:8001
+    # environment:
+    #   - REDIS_REPLICATION_MODE=master
+    #   - REDIS_ARGS="--requirepass mypassword"
+    volumes:
+      - ./redis/data:/data
+    #   - ./redis/data:/var/lib/redis
+    #   - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis_stack_network
+
+networks:
+  redis_stack_network:
+    driver: bridge
+    name: redis-stack-network
+    
