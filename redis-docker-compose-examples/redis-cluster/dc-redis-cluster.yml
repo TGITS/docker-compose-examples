@@ -89,3 +89,4 @@ services:
 networks:
   redis_network:
     driver: bridge
+    name: redis-network
