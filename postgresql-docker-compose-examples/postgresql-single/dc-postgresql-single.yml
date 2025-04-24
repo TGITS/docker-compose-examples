@@ -1,12 +1,8 @@
-version: '3.9'
-
-volumes:
-  postgresql_data:
-    driver: local
-
 services:
   postgres:
-    image: postgres
+    #image: postgres:latest # To download the latest image
+    #image: postgres:17.4-alpine # To download a specific version, here the version 17.4 of Postgresql under an alpine linux distribution - see https://hub.docker.com/_/postgres for list of versions
+    image: postgres:17.4 # To download a specific version, here the version 17.4 of Postgresql - see https://hub.docker.com/_/postgres for list of versions
     container_name: postgres
     volumes:
       - postgresql_data:/var/lib/postgresql/data
@@ -20,6 +16,10 @@ services:
       - "5432:5432"
     networks:
       - postgres_network
+
+volumes:
+  postgresql_data:
+    driver: local
 
 networks:
   postgres_network:
