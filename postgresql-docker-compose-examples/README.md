@@ -92,13 +92,18 @@ As such it is a matter of needs and preferences.
 
 ![Initiating the registration of a new server](./img/pgAdmin_002.png)
 
-* A popup window with several tabs should appear
+* A popup window with several tabs should appear.
+* In the `General` tab you have to fill the `Name` field (this is the name you want to give to your PostgreSQL Instance, it can be whatever you want). You should also toggle on the `Connect now ?` button.
 
 ![Configuring the connection to the new server](./img/pgAdmin_003.png)
 
+* In the `Connection` tab, you have to fill the `Host name/address` field with the value `localhost`, the `Port` field with the value `5432`, and the fields `Maintenance database`, `Username` and `Password` with respectively the values of the environment variables `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`.
+
 ![Configuring the connection to the new server](./img/pgAdmin_004.png)
 
-![Accessing the new server](./img/pgAdmin_004.png)
+* When you click on the `Save` button, pgAdmin should connect to the database server and it should appear in the `Object Explorer` panel.
+
+![Accessing the new server](./img/pgAdmin_005.png)
 
 ## Stopping the container
 
