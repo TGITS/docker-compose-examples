@@ -141,8 +141,6 @@ You can of course change the values to your liking if necessary.
 The docker compose file is quite simple and straightforward.
 
 ```yaml
-version: '3.9'
-
 services:
   mongodb:
     image: mongo:latest
@@ -262,6 +260,7 @@ It's now up to you to explore MongoDB with it.
 
 ## Bibliography
 
+* The [blog post on Medium](https://medium.com/norsys-octogone/a-local-environment-for-mongodb-with-docker-compose-ba52445b93ed) associated with this repository.
 * [Documentation](https://www.mongodb.com/docs/) on the [official MongoDB site](https://www.mongodb.com/)
   * [db.auth()](https://www.mongodb.com/docs/manual/reference/method/db.auth/)
   * [Docker and MongoDB](https://www.mongodb.com/compatibility/docker)
