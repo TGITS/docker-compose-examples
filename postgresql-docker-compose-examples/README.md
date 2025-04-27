@@ -50,7 +50,7 @@ After starting DBeaver :
 
 ![Selecting PostgreSQL as the database for which you want to create a connection](./pics/access_pg_with_dbeaver_002.png)
 
-* You should have on a window with the connection settings to fill.
+* A window with the connection settings to fill should open.
   * You should change the value for `Database` (should be the value associated with `POSTGRES_DB` in the `.env` file), for `Username` (should be the value associated with `POSTGRES_USER` in the `.env` file) and `Password` (should be the value associated with `POSTGRES_PASSWORD` in the `.env` file).
   * The default value for the other fields should be the values you need.
 
@@ -70,18 +70,20 @@ After starting DBeaver :
 ![The new connection in the Database Navigator view](./pics/access_pg_with_dbeaver_006.png)
 
 * You can now access your new (empty) database.
-  * You can found the created usr under `Roles`
+  * You can found the created user under `Roles`
 
 ![Accessing the new database from the Database Navigator view](./pics/access_pg_with_dbeaver_007.png)
 
 ## Accessing the PostgreSQL instance with the pgAdmin Desktop client
 
-When you [download pgAdmin 4](https://www.pgadmin.org/download/), it comes with a desktop runtime written in Electron.
-Once pgAdmin is installed on your computer, it is under the subdirectory `runtime` with the name `pgAdmin4` or `pgAdmin4.exe` (on Windows).
+When you [download pgAdmin 4](https://www.pgadmin.org/download/), it comes with a desktop GUI written in Electron.
+Once pgAdmin is installed on your computer, it is under the subdirectory `runtime` with the name `pgAdmin4` or `pgAdmin4.exe` on Windows.
 Executing this file will start the pgAdmin web application and the Electron application.
 The whole application require a lot of ressources of your system and DBeaver is probably a more lightweigth solution.
 However, pgAdmin is a very complete and powerful solution to work with a PostgreSQL instance.
 As such it is a matter of needs and preferences.
+
+To configure pgAdmin :
 
 * Run the desktop application (`pgAdmin4` or `pgAdmin4.exe` on Windows)
 * When the application is started, on your first run, you should have something similar to the next screenshot
@@ -128,6 +130,6 @@ docker compose -f dc-postgresql-single.yml down
   * [DBeaver Community](https://dbeaver.io/)
   * [pgmanage](https://github.com/commandprompt/pgmanage)
 * Documentation in French
-  * [PostgreSQL documentation in fench](https://docs.postgresql.fr/)
+  * [PostgreSQL documentation in French](https://docs.postgresql.fr/)
   * [Site of the French PostgreSQL community ](https://www.postgresql.fr/)
-* Baeldung tutorial : [PostgreSQL with Docker Setup](https://www.baeldung.com/ops/postgresql-docker-setup)
+* Baeldung tutorial if you just want to use Docker and not Docker Compose : [PostgreSQL with Docker Setup](https://www.baeldung.com/ops/postgresql-docker-setup)
