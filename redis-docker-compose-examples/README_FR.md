@@ -54,7 +54,7 @@ docker compose -f dc-redis-cluster.yml down
 
 ### Pour le mode single
 
-Lors d'un lancement depuis WSL, pour pouvoir accéder aux ports de RabbitMQ depuis windows il faut lancer le script suivant :
+Lors d'un lancement depuis WSL, pour pouvoir accéder aux ports de Redis depuis windows il faut lancer le script suivant :
 
 ```powershell
 $wslIp=(wsl -d Ubuntu -e sh -c "ip addr show eth0 | grep 'inet\b' | awk '{print `$2}' | cut -d/ -f1") # Get the private IP of the WSL2 instance
