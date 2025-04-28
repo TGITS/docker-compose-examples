@@ -1,9 +1,8 @@
-version: "3.9"
-
 services:
   redis:
     container_name: redis
-    image: redis:alpine
+    #image: redis:latest # To download the latest image
+    image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     ports:
       - 6379:6379
     # environment:
@@ -14,9 +13,28 @@ services:
     command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
     networks:
       - redis_network
+  redisinsight:
+    container_name: redisinsight
+    image: redis/redisinsight:latest # To download the latest image
+    env_file:
+      - .env    
+    environment:
+      RI_APP_PORT: ${RI_APP_PORT}
+      RI_APP_HOST: ${RI_APP_HOST}
+      RI_LOG_LEVEL: ${RI_LOG_LEVEL}
+      RI_FILES_LOGGER: ${RI_FILES_LOGGER}
+      RI_REDIS_HOST: ${RI_REDIS_HOST}
+    ports:
+      - 5540:5540
+    volumes:
+      - ./redisinsight/data:/data
+    networks:
+      - redis_network
+    depends_on:
+      - redis
+  
 
 networks:
   redis_network:
     driver: bridge
-    name: redis-network
     

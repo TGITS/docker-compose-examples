@@ -38,11 +38,24 @@ Puis création du cluster avec le client Redis en ligne de commande : `redis-cli
 docker compose -f dc-redis-cluster.yml down
 ```
 
+### CLI
+
+```shell
+docker run -it --network some-network --rm redis redis-cli -h some-redis
+```
+
+`docker exec -it postgres /bin/sh`
+
+* `docker exec -it redis /bin/sh`
+* `redis-cli`
+* `quit` to exit `redis-cli`
+* `exit` to exit the shell
+
 ## Clients lourds
 
 ### RedisInsight
 
-* [Site Officiel](https://redis.com/fr/redis-enterprise/redisinsight)
+* [Site Officiel](https://redis.io/insight/)
 
 ### Another Redis Desktop Manager
 
@@ -54,7 +67,7 @@ docker compose -f dc-redis-cluster.yml down
 
 ### Pour le mode single
 
-Lors d'un lancement depuis WSL, pour pouvoir accéder aux ports de RabbitMQ depuis windows il faut lancer le script suivant :
+Lors d'un lancement depuis WSL, pour pouvoir accéder aux ports de Redis depuis windows il faut lancer le script suivant :
 
 ```powershell
 $wslIp=(wsl -d Ubuntu -e sh -c "ip addr show eth0 | grep 'inet\b' | awk '{print `$2}' | cut -d/ -f1") # Get the private IP of the WSL2 instance
@@ -89,10 +102,25 @@ netsh interface portproxy add v4tov4 listenport="6384" connectaddress="$wslIp" c
 
 ## Ressources
 
+* Site officielle de Redis
+  * [Redis configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
+    * [Configuration file for Redis 7.4.3](https://raw.githubusercontent.com/redis/redis/unstable/redis.conf)
+* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/redisinsight/configuration/)
 * [Creating Redis Cluster using Docker](https://medium.com/commencis/creating-redis-cluster-using-docker-67f65545796d)
 * [Scaling with Redis Cluster](https://redis.io/docs/manual/scaling/)
 * [Redis cluster specification](https://redis.io/docs/reference/cluster-spec/)
 * [docker-redis-cluster](https://github.com/Grokzen/docker-redis-cluster)
 * [How to Setup & Configure a Redis Cluster Easily](https://www.dltlabs.com/blog/how-to-setup-configure-a-redis-cluster-easily-573120)
-
-docker compose -f dc-redis-single.yml up -d
+* [Image Docker Officielle de Redis](https://hub.docker.com/_/redis)
+* [How to Use the Redis Docker Official Image](https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/)
+* [Image Docker Officielle de Redis Insight](https://hub.docker.com/r/redis/redisinsight)
+* [Another Redis Desktop Manager](https://goanother.com/)
+  * [GitHub](https://github.com/qishibo/AnotherRedisDesktopManager)
+  * [Releases](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
+* Docker Networking
+  * [Networking overview](https://docs.docker.com/engine/network/)
+  * [Network drivers](https://docs.docker.com/engine/network/drivers/)
+  * [Les réseaux dans docker-compose.yml](https://www.nicelydev.com/docker/reseau-docker-compose)
+  * [Networking With Docker Compose (Quick Guide)](https://www.netmaker.io/resources/docker-compose-network)
+  * [Networking in Compose](https://docs.docker.com/compose/how-tos/networking/)
+  * [Services top-level elements](https://docs.docker.com/reference/compose-file/services/)
