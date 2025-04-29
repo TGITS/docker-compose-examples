@@ -133,3 +133,5 @@ docker compose -f dc-postgresql-single.yml down
   * [PostgreSQL documentation in French](https://docs.postgresql.fr/)
   * [Site of the French PostgreSQL community ](https://www.postgresql.fr/)
 * Baeldung tutorial if you just want to use Docker and not Docker Compose : [PostgreSQL with Docker Setup](https://www.baeldung.com/ops/postgresql-docker-setup)
+* Medium Post which explains how to initialize a PostgreSQL Database : [Initializing a PostgreSQL Database with a Dataset using Docker Compose: A Step-by-step Guide](https://medium.com/@asuarezaceves/initializing-a-postgresql-database-with-a-dataset-using-docker-compose-a-step-by-step-guide-3feebd5b1545)
+* The CSV File with the Pokemon data is from here : https://gist.github.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6
