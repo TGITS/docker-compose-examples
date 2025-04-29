@@ -7,7 +7,6 @@ services:
     container_name: postgres
     volumes:
       - postgresql_data:/var/lib/postgresql/data
-      - ./initdb.d:/docker-entrypoint-initdb.d
     env_file:
       - .env    
     environment:
