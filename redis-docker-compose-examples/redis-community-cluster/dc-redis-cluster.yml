@@ -1,9 +1,8 @@
-version: "3.9"
-
 services:
   redis-1:
     container_name: redis-1
-    image: redis:alpine
+    #image: redis:latest # To download the latest image
+    image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     hostname: redis-1
     ports:
       - 6379:6379
@@ -17,7 +16,8 @@ services:
           - redis-1
   redis-2:
     container_name: redis-2
-    image: redis:alpine
+    #image: redis:latest # To download the latest image
+    image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     hostname: redis-2
     ports:
       - 6380:6380
@@ -31,7 +31,8 @@ services:
           - redis-2
   redis-3:
     container_name: redis-3
-    image: redis:alpine
+    #image: redis:latest # To download the latest image
+    image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     hostname: redis-3
     ports:
       - 6381:6381
@@ -45,7 +46,8 @@ services:
           - redis-3
   redis-4:
     container_name: redis-4
-    image: redis:alpine
+    #image: redis:latest # To download the latest image
+    image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     hostname: redis-4
     ports:
       - 6382:6382
@@ -59,7 +61,8 @@ services:
           - redis-4
   redis-5:
     container_name: redis-5
-    image: redis:alpine
+    #image: redis:latest # To download the latest image
+    image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     hostname: redis-5
     ports:
       - 6383:6383
@@ -73,7 +76,8 @@ services:
           - redis-5
   redis-6:
     container_name: redis-6
-    image: redis:alpine
+    #image: redis:latest # To download the latest image
+    image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     hostname: redis-6
     ports:
       - 6384:6384
@@ -85,6 +89,30 @@ services:
       redis_network:
         aliases:
           - redis-6
+  redisinsight:
+    container_name: redisinsight
+    image: redis/redisinsight:latest # To download the latest image
+    env_file:
+      - .env    
+    environment:
+      RI_APP_PORT: ${RI_APP_PORT}
+      RI_APP_HOST: ${RI_APP_HOST}
+      RI_LOG_LEVEL: ${RI_LOG_LEVEL}
+      RI_FILES_LOGGER: ${RI_FILES_LOGGER}
+      RI_REDIS_HOST: ${RI_REDIS_HOST}
+    ports:
+      - 5540:5540
+    volumes:
+      - ./redisinsight/data:/data
+    networks:
+      - redis_network
+    depends_on:
+      - redis-1
+      - redis-2
+      - redis-3
+      - redis-4
+      - redis-5
+      - redis-6
 
 networks:
   redis_network:

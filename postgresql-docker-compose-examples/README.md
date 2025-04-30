@@ -10,13 +10,12 @@ docker compose -f dc-postgresql-complete.yml up -d
 
 If your are on Windows, you can use WSL or if you have the docker engine installed (via Docker Desktop or Rancher Desktop) you can use Windows Powershell.
 
-![First pull of an image postgres:17.4-alpine from Windows Powershell](./pics/docker-compose-result-for-first-time-pull-image-pg-17.4-alpine.png)
+![First pull of the image of PostgreSQL, pgAdmin & Metabase](./pics/postgres-pgadmin-and-metabase-first-pull.png)
 
-![Running container of an image postgres:17.4-alpine on Rancher Desktop on Windows](./pics/rancher-desktop-after-pull-image-pg-17.4-alpine.png)
+![The running containers (PostgreSQL, pgAdmin, Metabase) in Rancher Desktop](./pics/postgres-pgadmin-and-metabase-containers-running-in-rancher-desktop.png)
 
-![First pull of the default latest image version from Windows Powershell](./pics/docker-compose-result-for-first-time-pull-image-pg-latest.png)
-
-![Running container of the default latest image of postgres on Rancher Desktop on Windows](./pics/rancher-desktop-after-pull-image-pg-latest.png)
+The `.env` file defines the 3 environment variables used in the docker compose file `dc-postgresql-complete.yml` : `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, which respectively corresponds to the name of a Postgres Database, the name of a user of this database and the password of this user.
+The Postgres instance will be created with this database and the associated user.
 
 ## Accessing the PostgreSQL instance with the CLI in the container
 
@@ -27,18 +26,22 @@ To access your database instance with the dedicated CLI from a shell in the cont
 * Running the Postgres CLI : `psql -W -Umydb -dmydb`. 
   * With the option `-W`, you will be prompted for the password
   * The password is defined in the `.env` file, under the variable `POSTGRES_PASSWORD`
+* You can execute a query. For example you can try
+
+```sql
+SELECT * FROM public.pokemon 
+LIMIT 10;
+```
+
 * To quit `psql` you can type `exit`
 * To quit the shell you can also type `exit`
-
-The `.env` file defines the 3 environment variables used in the docker compose file `dc-postgresql-complete.yml` : `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, which respectively corresponds to the name of a Postgres Database, the name of a user of this database and the password of this user.
-The Postgres instance will be created with this database and the associated user.
 
 ![Accessing the Postgres instance from the PSQL CLI](./pics/accessing_pg_instance_from_cli_in_container.png)
 
 ## Accessing the PostgreSQL instance with pgAdmin
 
-When the containers are up, pgAdmin will be available on `localhost:5433`
-To configure pgAdmin :
+When the containers are up, **pgAdmin** will be available on `localhost:5433`
+To configure **pgAdmin** :
 
 * When the application is started, on your first run, you should have something similar to the next screenshot. You have to provide the values of the environment variables `PGADMIN_DEFAULT_EMAIL` and `PGADMIN_DEFAULT_PASSWORD`
 
@@ -59,34 +62,61 @@ To configure pgAdmin :
 
 * When you click on the `Save` button, pgAdmin should connect to the database server and it should appear in the `Object Explorer` panel.
 
-![Accessing the new server](./pics/ppgAdmin-web-004.png)
+![Accessing the new server](./pics/pgAdmin-web-004.png)
 
 * You can navigate to the table `Pokemon` which should have been initialized
 
-![Accessing the table with which the database has been initialized](./pics/ppgAdmin-web-005.png)
+![Accessing the table with which the database has been initialized](./pics/pgAdmin-web-005.png)
 
 ## Accessing the PostgreSQL instance with Metabase
 
 Metabase is not a database tool like pgAdmin or DBeaver. It is a _business intelligence_/_analytics_ platform : you will not directly do low level SQL requests or working directly on the Database. It's a tool to manipulate you data to extract information from them. 
 As such it does not have the same use as pgAdmin but can be useful in its own right depending on your needs.
 
-When the containers are up, metabase will be available on `localhost:5434`
+When the containers are up, metabase will be available on `localhost:5434`.
+
+On the first connection, you will have to configure Metabase.
+As you can see in the first screenshot, the first screen is not necessarily in English (in French in my case, which corresponds to my locale).
+However you can choose the appropriate language for your conifguration in the next screen.
+On this first screen, you just have to clic on the button.
 
 ![First connection to Metabase - Configuration (1/7)](./pics/accessing_pg_with_metabase_001.png)
 
+You choose the language for the user interface and then enter some _personal_ information (name, email, etc.)
+
 ![First connection to Metabase - Configuration (2/7)](./pics/accessing_pg_with_metabase_002.png)
+
+You will next indicate what is your intended use of Metabase if you know it
 
 ![First connection to Metabase - Configuration (3/7)](./pics/accessing_pg_with_metabase_003.png)
 
+You will next indicate to which kind of database you want to connect, in our case **PostgreSQL**.
+
 ![First connection to Metabase - Configuration (4/7)](./pics/accessing_pg_with_metabase_004.png)
+
+After selecting **PostgreSQL**, you will have to configure your connection :
+
+* The host is `postgres` (as defined in the docker compose file)
+* The port  is `5432` (as defined in the docker compose file)
+* The fields `Database name`, `Username` and `Password` should be filled respectively with the values of the environment variables `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` defined in the `env` file.
+* You can now connect to the database.
 
 ![First connection to Metabase - Configuration (5/7)](./pics/accessing_pg_with_metabase_005.png)
 
+You can finally give your usage data preferences.
+
 ![First connection to Metabase - Configuration (6/7)](./pics/accessing_pg_with_metabase_006.png)
+
+At last, the configuration is done !
 
 ![First connection to Metabase - Configuration (7/7)](./pics/accessing_pg_with_metabase_007.png)
 
-![Accessing the data](./pics/accessing_pg_with_metabase_009.png)
+You can now explore your data.
+Metabase invites you to have a look at the table created at initialization (Here `Pokemon`).
+
+![Accessing the data](./pics/accessing_pg_with_metabase_008.png)
+
+You can start exploring the data.
 
 ![Exploring the data](./pics/accessing_pg_with_metabase_009.png)
 
@@ -132,13 +162,14 @@ After starting DBeaver :
 ## Accessing the PostgreSQL instance with the pgAdmin Desktop client
 
 When you [download pgAdmin 4](https://www.pgadmin.org/download/), it comes with a desktop GUI written in Electron.
-Once pgAdmin is installed on your computer, it is under the subdirectory `runtime` with the name `pgAdmin4` or `pgAdmin4.exe` on Windows.
-Executing this file will start the pgAdmin web application and the Electron application.
-The whole application require a lot of ressources of your system and DBeaver is probably a more lightweigth solution.
-However, pgAdmin is a very complete and powerful solution to work with a PostgreSQL instance.
-As such it is a matter of needs and preferences.
+Once **pgAdmin** is installed on your computer, it is under the subdirectory `runtime` with the name `pgAdmin4` or `pgAdmin4.exe` on Windows.
+Executing this file will start the **pgAdmin** web application and the Electron application.
+The whole application require a lot of ressources of your system and **DBeaver** is probably a more lightweigth solution.
+However, **pgAdmin** is a very complete and powerful solution to work with a PostgreSQL instance. 
+Of course, rather than installing locally **pgAdmin** you could use the containerized version.
+As a matter of fact, do not install it both locally and in its containerized form.
 
-To configure pgAdmin :
+To configure **pgAdmin** :
 
 * Run the desktop application (`pgAdmin4` or `pgAdmin4.exe` on Windows)
 * When the application is started, on your first run, you should have something similar to the next screenshot
@@ -172,11 +203,11 @@ docker compose -f dc-postgresql-complete.yml down
 
 ![Stopping the container with docker compose](./pics/stopping-the-container-with-docker-compose.png)
 
-## Dedicated docker compose file
+## Dedicated docker compose files
 
-### Only a PostgreSQL instance
+### Only PostgreSQL
 
-If you only need a postgreSQL instance you can use the docker compose file under `postgresql-docker-compose-examples/postgresql-only`.
+If you only need a **postgreSQL** instance you can use the docker compose file under `postgresql-docker-compose-examples/postgresql-only`.
 To fire up the container :
 
 ```txt
@@ -188,12 +219,20 @@ To stop it :
 docker compose -f dc-postgresql-complete.yml down
 ```
 
-The configuration of the different tools is similar to what have been presented previously.
-In this example the PostgreSQL instance is not initialized with a table.
+The configuration of the different tools is similar to what have been presented previously if need be.
+In this example the PostgreSQL instance database is not initialized with a table.
+
+![First pull of an image postgres:17.4-alpine from Windows Powershell](./pics/docker-compose-result-for-first-time-pull-image-pg-17.4-alpine.png)
+
+![Running container of an image postgres:17.4-alpine on Rancher Desktop on Windows](./pics/rancher-desktop-after-pull-image-pg-17.4-alpine.png)
+
+![First pull of the default latest image version from Windows Powershell](./pics/docker-compose-result-for-first-time-pull-image-pg-latest.png)
+
+![Running container of the default latest image of postgres on Rancher Desktop on Windows](./pics/rancher-desktop-after-pull-image-pg-latest.png)
 
 ### PostgreSQL and pgAdmin
 
-If you only need a postgreSQL instance with pgAdmin you can use the docker compose file under `postgresql-docker-compose-examples/postgresql-pgadmin`.
+If you only need a **postgreSQL** instance with **pgAdmin** you can use the docker compose file under `postgresql-docker-compose-examples/postgresql-pgadmin`.
 To fire up the container :
 
 ```txt
@@ -205,9 +244,11 @@ To stop it :
 docker compose -f dc-postgresql-pgadmin.yml down
 ```
 
+The configuration of **pgAdmin** is identical to the one explained previously.
+
 ### PostgreSQL and Metabase
 
-If you only need a postgreSQL instance with Metabase you can use the docker compose file under `postgresql-docker-compose-examples/postgresql-metabase`.
+If you only need a **postgreSQL** instance with **Metabase** you can use the docker compose file under `postgresql-docker-compose-examples/postgresql-metabase`.
 To fire up the container :
 
 ```txt
@@ -218,6 +259,8 @@ To stop it :
 ```txt
 docker compose -f dc-postgresql-metabase.yml down
 ```
+
+The configuration of **Metabase** is identical to the one explained previously.
 
 ## Ressources
 

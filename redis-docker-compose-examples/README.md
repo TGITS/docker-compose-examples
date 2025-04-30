@@ -63,6 +63,8 @@ docker run -it --network some-network --rm redis redis-cli -h some-redis
 * [GitHub](https://github.com/qishibo/AnotherRedisDesktopManager)
   * [Téléchargement des binaires sur GitHub](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
 
+### Plugin Redis for Visual Studio Code
+
 ## WSL
 
 ### Pour le mode single

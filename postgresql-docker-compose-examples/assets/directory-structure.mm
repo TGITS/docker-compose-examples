@@ -1,10 +1,10 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="postgresql-docker-compose-examples" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1090958577" CREATED="1409300609620" MODIFIED="1745679650277">
+<node TEXT="postgresql-docker-compose-examples" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1090958577" CREATED="1409300609620" MODIFIED="1746016238147">
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <font SIZE="14" BOLD="true"/>
 <hook NAME="MapStyle" background="#f9f9f8ff">
-    <properties show_icon_for_attributes="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_note_icons="true" associatedTemplateLocation="template:/light_nord_template.mm" fit_to_viewport="false" show_icons="BESIDE_NODES" show_tags="UNDER_NODES"/>
+    <properties show_icon_for_attributes="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" show_note_icons="true" associatedTemplateLocation="template:/light_nord_template.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
     <tags category_separator="::"/>
 
 <map_styles>
@@ -84,12 +84,15 @@
 </stylenode>
 </map_styles>
 </hook>
-<node TEXT="postgresql-single" POSITION="bottom_or_right" ID="ID_246348881" CREATED="1708702093527" MODIFIED="1745679664334">
+<node TEXT="" POSITION="bottom_or_right" ID="ID_553362171" CREATED="1746016176284" MODIFIED="1746016176284">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="postgresql-only" POSITION="bottom_or_right" ID="ID_246348881" CREATED="1708702093527" MODIFIED="1746016238140" TEXT_SHORTENED="true">
 <font SIZE="14"/>
 <node TEXT="" ID="ID_1107507287" CREATED="1745679728443" MODIFIED="1745679728443">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="postgresql_data" ID="ID_37749192" CREATED="1708702111696" MODIFIED="1745679716238" TEXT_SHORTENED="true"/>
+<node TEXT="postgresql_data" ID="ID_37749192" CREATED="1708702111696" MODIFIED="1746016240363" TEXT_SHORTENED="true"/>
 <node TEXT="" ID="ID_179325364" CREATED="1745679728436" MODIFIED="1745679728442">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
@@ -107,12 +110,17 @@
 <node TEXT="" ID="ID_1970842797" CREATED="1708702349328" MODIFIED="1708702349328">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="dc-postgresql-single.yml" ID="ID_1216405956" CREATED="1708702157113" MODIFIED="1745679675931"/>
+<node TEXT="dc-postgresql-only.yml" ID="ID_1216405956" CREATED="1708702157113" MODIFIED="1746016163874"/>
 <node TEXT="" ID="ID_121908137" CREATED="1708702349325" MODIFIED="1708702349327">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
 <node TEXT="The docker-compose file to run a postgreSQL instance" ID="ID_161419776" CREATED="1708702349330" MODIFIED="1745679830076"/>
 </node>
+</node>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1465166544" CREATED="1746016176265" MODIFIED="1746016176284">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="For running &quot;only&quot; a container with an instance of PostgreSQL" ID="ID_897084745" CREATED="1746016176288" MODIFIED="1746016235371"/>
 </node>
 <node TEXT="" POSITION="bottom_or_right" ID="ID_1298465235" CREATED="1708702562942" MODIFIED="1708702562942">
 <hook NAME="FirstGroupNode"/>
