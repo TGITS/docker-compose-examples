@@ -60,7 +60,7 @@ To configure **pgAdmin** :
 
 ![Configuring the connection to the new server](./pics/pgAdmin-web-003.png)
 
-* When you click on the `Save` button, pgAdmin should connect to the database server and it should appear in the `Object Explorer` panel.
+* When you click on the `Save` button, **pgAdmin** should connect to the database server and it should appear in the `Object Explorer` panel.
 
 ![Accessing the new server](./pics/pgAdmin-web-004.png)
 
@@ -70,7 +70,7 @@ To configure **pgAdmin** :
 
 ## Accessing the PostgreSQL instance with Metabase
 
-Metabase is not a database tool like pgAdmin or DBeaver. It is a _business intelligence_/_analytics_ platform : you will not directly do low level SQL requests or working directly on the Database. It's a tool to manipulate you data to extract information from them. 
+Metabase is not a database tool like **pgAdmin** or **DBeaver**. It is a _business intelligence_/_analytics_ platform : you will not directly do low level SQL requests or working directly on the Database. It's a tool to manipulate you data to extract information from them. 
 As such it does not have the same use as pgAdmin but can be useful in its own right depending on your needs.
 
 When the containers are up, metabase will be available on `localhost:5434`.
