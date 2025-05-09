@@ -204,3 +204,8 @@
 /neo4j-docker-compose-examples/neo4j-single/data/dbms
 /neo4j-docker-compose-examples/neo4j-single/data/transactions
 /mongodb-docker-compose-examples/assets/*.odg#
+/redis-docker-compose-examples/redis-community-single/redisinsight/data/*.db
+/redis-docker-compose-examples/redis-community-single/redisinsight/data/tutorials
+/redis-docker-compose-examples/redis-community-single/redisinsight/data/commands
+/redis-docker-compose-examples/redis-community-single/redisinsight/data/content
+/redis-docker-compose-examples/redis-community-single/redisinsight/data/plugins
