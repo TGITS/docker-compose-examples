@@ -14,7 +14,7 @@ If your are on Windows, you can use WSL or if you have the docker engine install
 
 ![The running containers (PostgreSQL, pgAdmin, Metabase) in Rancher Desktop](./pics/postgres-pgadmin-and-metabase-containers-running-in-rancher-desktop.png)
 
-The `.env` file defines the 3 environment variables used in the docker compose file `dc-postgresql-complete.yml` : `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, which respectively corresponds to the name of a Postgres Database, the name of a user of this database and the password of this user.
+The `.env` file defines the  environment variables used in the docker compose file `dc-postgresql-complete.yml` for **PostgreSQL** and **pgAdmin** : `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, which respectively corresponds to the name of a Postgres Database, the name of a user of this database and the password of this user. It also contains `PGADMIN_DEFAULT_EMAIL` which is necessary for **pgAdmin**.
 The Postgres instance will be created with this database and the associated user.
 
 ## Accessing the PostgreSQL instance with the CLI in the container
@@ -49,24 +49,24 @@ To configure **pgAdmin** :
 
 * You first need to register a new server by a right click on `Servers` in the `Object explorer`
 
-![Initiating the registration of a new server](./pics/pgAdmin-web-001.png)
+![Initiating the registration of a new server](./pics/pgadmin-web-001.png)
 
 * A popup window with several tabs should appear.
 * In the `General` tab you have to fill the `Name` field (this is the name you want to give to your PostgreSQL Instance, it can be whatever you want). You should also toggle on the `Connect now ?` button.
 
-![Configuring the connection to the new server](./pics/pgAdmin-web-002.png)
+![Configuring the connection to the new server](./pics/pgadmin-web-002.png)
 
-* In the `Connection` tab, you have to fill the `Host name/address` field with the value `postgres` (the host name of the PostgreSQL instance in the container), the `Port` field with the value `5432`, and the fields `Maintenance database`, `Username` and `Password` with respectively the values of the environment variables `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`.
+* In the `Connection` tab, you have to fill the `Host name/address` field with the value `postgres` (the host name of the PostgreSQL instance in the container), the `Port` field with the value `5432`, and the fields `Maintenance database`, `Username` and `Password` with respectively the values of the environment variables `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`.
 
-![Configuring the connection to the new server](./pics/pgAdmin-web-003.png)
+![Configuring the connection to the new server](./pics/pgadmin-web-003.png)
 
 * When you click on the `Save` button, **pgAdmin** should connect to the database server and it should appear in the `Object Explorer` panel.
 
-![Accessing the new server](./pics/pgAdmin-web-004.png)
+![Accessing the new database server](./pics/pgadmin-web-004.png)
 
 * You can navigate to the table `Pokemon` which should have been initialized
 
-![Accessing the table with which the database has been initialized](./pics/pgAdmin-web-005.png)
+![Accessing the table with which the database has been initialized](./pics/pgadmin-web-005.png)
 
 ## Accessing the PostgreSQL instance with Metabase
 
@@ -77,8 +77,8 @@ When the containers are up, metabase will be available on `localhost:5434`.
 
 On the first connection, you will have to configure Metabase.
 As you can see in the first screenshot, the first screen is not necessarily in English (in French in my case, which corresponds to my locale).
-However you can choose the appropriate language for your conifguration in the next screen.
-On this first screen, you just have to clic on the button.
+However you can choose the appropriate language for your configuration in the next screen.
+On this first screen, you just have to click on the button.
 
 ![First connection to Metabase - Configuration (1/7)](./pics/accessing_pg_with_metabase_001.png)
 
@@ -98,7 +98,7 @@ After selecting **PostgreSQL**, you will have to configure your connection :
 
 * The host is `postgres` (as defined in the docker compose file)
 * The port  is `5432` (as defined in the docker compose file)
-* The fields `Database name`, `Username` and `Password` should be filled respectively with the values of the environment variables `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` defined in the `env` file.
+* The fields `Database name`, `Username` and `Password` should be filled respectively with the values of the environment variables `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` defined in the `.env` file.
 * You can now connect to the database.
 
 ![First connection to Metabase - Configuration (5/7)](./pics/accessing_pg_with_metabase_005.png)
@@ -201,7 +201,7 @@ To stop the container, type the following in your shell, from the directory whic
 docker compose -f dc-postgresql-complete.yml down
 ```
 
-![Stopping the container with docker compose](./pics/stopping-the-container-with-docker-compose.png)
+![Stopping the container with docker compose](./pics/stopping-the-containers-with-docker-compose.png)
 
 ## Dedicated docker compose files
 
@@ -211,12 +211,12 @@ If you only need a **postgreSQL** instance you can use the docker compose file u
 To fire up the container :
 
 ```txt
-docker compose -f dc-postgresql-complete.yml up -d
+docker compose -f dc-postgresql-only.yml up -d
 ```
 To stop it :
 
 ```txt
-docker compose -f dc-postgresql-complete.yml down
+docker compose -f dc-postgresql-only.yml down
 ```
 
 The configuration of the different tools is similar to what have been presented previously if need be.
@@ -252,7 +252,7 @@ If you only need a **postgreSQL** instance with **Metabase** you can use the doc
 To fire up the container :
 
 ```txt
-docker compose -f dc-postgresql-metabasen.yml up -d
+docker compose -f dc-postgresql-metabase.yml up -d
 ```
 To stop it :
 
@@ -268,7 +268,7 @@ The configuration of **Metabase** is identical to the one explained previously.
   * [Official Documentation](https://www.postgresql.org/docs/)
 * [Postgresql Logo](https://wiki.postgresql.org/wiki/Logo)
 * [PostgreSQL Official Image on Docker Hub](https://hub.docker.com/_/postgres)
-* [pgadmin4 Official Image on Docker Hub](https://hub.docker.com/r/dpage/pgadmin4/)
+* [pgAdmin Official Image on Docker Hub](https://hub.docker.com/r/dpage/pgadmin4/)
 * [Metabase](https://www.metabase.com/)
   * [Running Metabase on Docker](https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker)
 * [Metabase Official Image on Docker Hub](https://hub.docker.com/r/metabase/metabase)
