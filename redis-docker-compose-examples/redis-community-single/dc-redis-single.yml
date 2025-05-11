@@ -1,15 +1,13 @@
 services:
   redis:
     container_name: redis
-    #image: redis:latest # To download the latest image
+    # image: redis:latest # To download the latest image
     image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
     ports:
-      - 6379:6379
-    # environment:
-    #   - REDIS_REPLICATION_MODE=master
+      - 6379:6379 # HOST_PORT:CONTAINER_PORT
     volumes:
-      - ./redis/data:/var/lib/redis
-      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis_data:/var/lib/redis
+      - ./redis_conf/redis.conf:/usr/local/etc/redis/redis.conf
     command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
     networks:
       - redis_network
@@ -25,16 +23,18 @@ services:
       RI_FILES_LOGGER: ${RI_FILES_LOGGER}
       RI_REDIS_HOST: ${RI_REDIS_HOST}
     ports:
-      - 5540:5540
+      - 5540:5540 # HOST_PORT:CONTAINER_PORT
     volumes:
-      - ./redisinsight/data:/data
+      - redisinsight_data:/data
     networks:
       - redis_network
     depends_on:
       - redis
-  
-
+volumes:
+  redis_data:
+    driver: local
+  redisinsight_data:
+    driver: local
 networks:
   redis_network:
     driver: bridge
-    

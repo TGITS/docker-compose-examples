@@ -1,61 +1,61 @@
 # Redis
 
-## Mode mono-instance
+This [small project](https://github.com/TGITS/docker-compose-examples/tree/main/redis-docker-compose-examples) provides a _docker compose file_ and a minimalist directory structure that creates a local environment for the [Redis](https://redis.io/) database to be used for development and experimentation.
+Do not use this directly in a production enviroment or at your own risk !
+Two applications are provided by the _docker compose file_:
 
-### Lancement du conteneur avec l'instance Redis
+* A Redis single instance
+* [Redis Insight](https://redis.io/insight/) which is the official Redis Database tool
+
+This project has been developed and tested under Windows 11 Professional with [Docker](https://www.docker.com/) and [Rancher Desktop](https://rancherdesktop.io/). However it should work on Windows, MacOs and Linux, with directly [Docker](https://www.docker.com/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+In all cases you need to have a container engine compatible with `docker` and `docker compose` available in the command line.
+
+On the container with [Redis](https://redis.io/) database engine, there is also [Redis CLI](https://redis.io/docs/latest/develop/tools/cli/). 
+
+## Running the containers with the Redis instance
+
+To run the containers and the associated **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-community-single` directory and run the following command :
 
 ```shell
 docker compose -f dc-redis-single.yml up -d
 ```
 
-### Arrêt du conteneur
+If your are on Windows, you can use WSL or if you have the docker engine installed (via Docker Desktop or Rancher Desktop) you can use Windows Powershell.
+
+![Running docker compose with dc-redis-single.yml](./pics/docker-compose-result-for-first-time-pull.png)
+
+![The running containers (Redis and Redis Insight) in Rancher Desktop](./pics/redis_container_in_rancher_desktop.png)
+
+## Accessing Redis with the CLI in the container
+
+In a Powershell shell, run the following command line : `docker exec -it redis /bin/sh`.
+You are now in a shell in the container.
+
+![Opening a shell in the Redis Container](./pics/in_the_redis-container.png)
+
+Then type `redis-cli`.
+
+![Opening a the Redis CLI](./pics/opening-the-redis-cli.png)
+
+You can now type Redis command. For example `keys *` which output the list of keys with any name in the base. In this empty database, there should be none.
+You can type `quit` to exit `redis-cli` and of course `exit` to exit the shell if need be.
+
+## Stopping the container
+
+To stop the container, type the following in your shell, from the directory which contains the docker compose file dc-redis-single.yml :
 
 ```shell
 docker compose -f dc-redis-single.yml down
 ```
 
-## Mode cluster
+## Accessing Redis from the Redis Insight Web Interface
 
-### Lancement du conteneur avec les instances pour le cluster Redis
+[Redis Insight](https://redis.io/insight/) is available as a Web Application and as a Desktop client. 
+In this paragraph we will use the Web Application deployed as a container along side Redis itself.
+You have to connect to the url `http:\\localhost:5540` with your favorite navigator.
 
-```shell
-docker compose -f dc-redis-cluster.yml up -d
-```
-
-### Création du cluster
-
-Ouverture d'un _shell_ sur l'une des instances crées dans l'invite de commande via `docker exec -it redis-1 sh` ou en ouvrant un shell sur sur **Docker Desktop**, par exemple sur l'instance `redis-1`.
-
-![Ouverture d'un shell sur une instance Redis depuis Docker Desktop](img/ouverture-shell-sur-instance-redis.png "Ouverture d'un shell sur une instance Redis depuis Docker Desktop")
-
-Puis création du cluster avec le client Redis en ligne de commande : `redis-cli --cluster create redis-1:6379 redis-2:6380 redis-3:6381 redis-4:6382 redis-5:6383 redis-6:6384 --cluster-replicas 1`
-
-![Création du cluster Redis depuis le conteneur d'une des instances](img/redis-cluster-creation.png "Création du cluster Redis depuis le conteneur d'une des instances")
-
-### Arrêt du cluster
-
-```shell
-docker compose -f dc-redis-cluster.yml down
-```
-
-### CLI
-
-```shell
-docker run -it --network some-network --rm redis redis-cli -h some-redis
-```
-
-`docker exec -it postgres /bin/sh`
-
-* `docker exec -it redis /bin/sh`
-* `redis-cli`
-* `quit` to exit `redis-cli`
-* `exit` to exit the shell
-
-## Clients lourds
-
-### RedisInsight
-
-* [Site Officiel](https://redis.io/insight/)
+On your first connexion
 
 ### Another Redis Desktop Manager
 
@@ -78,28 +78,7 @@ netsh interface portproxy delete v4tov4 listenport="6379" # Delete any existing 
 netsh interface portproxy add v4tov4 listenport="6379" connectaddress="$wslIp" connectport="6379"
 ```
 
-### Pour le mode cluster
 
-```powershell
-$wslIp=(wsl -d Ubuntu -e sh -c "ip addr show eth0 | grep 'inet\b' | awk '{print `$2}' | cut -d/ -f1") # Get the private IP of the WSL2 instance
-
-netsh interface portproxy delete v4tov4 listenport="6379" # Delete any existing port 6379 forwarding
-netsh interface portproxy add v4tov4 listenport="6379" connectaddress="$wslIp" connectport="6379"
-
-netsh interface portproxy delete v4tov4 listenport="6380" # Delete any existing port 6380 forwarding
-netsh interface portproxy add v4tov4 listenport="6380" connectaddress="$wslIp" connectport="6380"
-
-netsh interface portproxy delete v4tov4 listenport="6381" # Delete any existing port 6381 forwarding
-netsh interface portproxy add v4tov4 listenport="6381" connectaddress="$wslIp" connectport="6381"
-
-netsh interface portproxy delete v4tov4 listenport="6382" # Delete any existing port 6382 forwarding
-netsh interface portproxy add v4tov4 listenport="6382" connectaddress="$wslIp" connectport="6382"
-
-netsh interface portproxy delete v4tov4 listenport="6383" # Delete any existing port 6383 forwarding
-netsh interface portproxy add v4tov4 listenport="6383" connectaddress="$wslIp" connectport="6383"
-
-netsh interface portproxy delete v4tov4 listenport="6384" # Delete any existing port 6384 forwarding
-netsh interface portproxy add v4tov4 listenport="6384" connectaddress="$wslIp" connectport="6384"
 ```
 
 ## Ressources
@@ -107,7 +86,7 @@ netsh interface portproxy add v4tov4 listenport="6384" connectaddress="$wslIp" c
 * Site officielle de Redis
   * [Redis configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
     * [Configuration file for Redis 7.4.3](https://raw.githubusercontent.com/redis/redis/unstable/redis.conf)
-* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/redisinsight/configuration/)
+* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/Redis Insight/configuration/)
 * [Creating Redis Cluster using Docker](https://medium.com/commencis/creating-redis-cluster-using-docker-67f65545796d)
 * [Scaling with Redis Cluster](https://redis.io/docs/manual/scaling/)
 * [Redis cluster specification](https://redis.io/docs/reference/cluster-spec/)
@@ -115,7 +94,7 @@ netsh interface portproxy add v4tov4 listenport="6384" connectaddress="$wslIp" c
 * [How to Setup & Configure a Redis Cluster Easily](https://www.dltlabs.com/blog/how-to-setup-configure-a-redis-cluster-easily-573120)
 * [Image Docker Officielle de Redis](https://hub.docker.com/_/redis)
 * [How to Use the Redis Docker Official Image](https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/)
-* [Image Docker Officielle de Redis Insight](https://hub.docker.com/r/redis/redisinsight)
+* [Image Docker Officielle de Redis Insight](https://hub.docker.com/r/redis/Redis Insight)
 * [Another Redis Desktop Manager](https://goanother.com/)
   * [GitHub](https://github.com/qishibo/AnotherRedisDesktopManager)
   * [Releases](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
