@@ -11,7 +11,7 @@ This project has been developed and tested under Windows 11 Professional with [D
 
 In all cases you need to have a container engine compatible with `docker` and `docker compose` available in the command line.
 
-On the container with [Redis](https://redis.io/) database engine, there is also [Redis CLI](https://redis.io/docs/latest/develop/tools/cli/). 
+On the container with the [Redis](https://redis.io/) database engine, there is also [Redis CLI](https://redis.io/docs/latest/develop/tools/cli/). 
 
 ## Running the containers with the Redis instance
 
@@ -29,7 +29,7 @@ If you are on Windows, you can use WSL or if you have the docker engine installe
 
 ## Accessing Redis with the CLI in the container
 
-In a Powershell shell, run the following command line : `docker exec -it redis /bin/sh`.
+In a shell, run the following command line : `docker exec -it redis /bin/sh`.
 You are now in a shell in the container.
 Then type `redis-cli`.
 You can now type Redis command. For example `keys *` which output the list of keys with any name in the base. In this empty database, there should be none.
@@ -72,6 +72,7 @@ You land on the _Browser_ page but with the button on the left you can now acces
 ![Accessing the workbench](./pics/accessing_the_workbench.png)
 
 You can also install the desktop client which is an Electron app and works in a similar way.
+The only attention point is for the Redis instance host : it should be `127.0.0.1` or `localhost`, as you access the instance form _outside docker_ and not `redis`.
 
 ## Stopping the container
 
@@ -81,25 +82,54 @@ To stop the container, type the following in the shell, from the directory which
 docker compose -f dc-redis-single.yml down
 ```
 
-## Another Redis Desktop Manager
+## Accessing the Redis instance with Another Redis Desktop Manager
 
-There is at least another alternative for a desktop client with [Another Redis Desktop Manager](https://goanother.com/).
+There is at least another alternative for a desktop client : [Another Redis Desktop Manager](https://goanother.com/).
 You can download [the binary from GitHub](https://github.com/qishibo/AnotherRedisDesktopManager/releases).
+The installation is quite straightforward and you can only get a zip archive.
 
-## Plugin Redis for Visual Studio Code
+When you run the executable for the first time, a window similar at the foloowing screenshot should open. 
 
-There is also [an official VS Code Plugin](https://redis.io/docs/latest/develop/tools/redis-for-vscode/).
+![First connection to Another Redis Desktop Manager](./pics/ardm_001_first-time_execution.png)
+
+When you click on the button `New Connection` on the left-side top corner, a new window should open.
+In this new window you can enter the settings for this new connection.
+To connect to the dockerised local instance, you will note that the host should be `127.0.0.1` or `localhost`, as you access the instance form _outside docker_ so to speak. As such the host is not `redis` as it was for the dockerised Redis Insight.
+
+![Creating a new Connection in Another Redis Desktop Manager](./pics/ardm_002_new_connection.png)
+
+After clicking on the `OK` button, the new connection is now available.
+When selecting it, you can now access to the Redis instance.
+
+![Accessing the local redis instance in Another Redis Desktop Manager](./pics/ardm_003_accessing_the_local_instance.png)
+
+## Accessing the Redis instance with the Redis Plugin for Visual Studio Code
+
+There is also an [official Visual Studio Code Plugin](https://redis.io/docs/latest/develop/tools/redis-for-vscode/).
 
 On the first execution of the plugin you will have to answer some questions about the privacy settings.
 
 ![Privacy settings on first execution of the Redis plugin](./pics/privacy_settings_for_redis_vs_code_plugin.png)
 
+After configuring this settings to your liking, you should access a _welcome screen_.
+
+![Redis VS Code Plugin welcome screen](./pics/redis_vscode_plugin_welcome_screen.png)
+
+When clicking on the link `+ Connect your database`, you access a form to enter the parameters of the connection.
+As for [Another Redis Desktop Manager](https://goanother.com/), to connect to the dockerised local instance, the host should be `127.0.0.1` or `localhost`, as you access the instance form _outside docker_.
+
+![Adding a new Redis Database in the Redis VS Code Plugin](./pics/adding_a_redis_database.png)
+
+You can now access your Redis instance directly from [Visual Studio Code](https://code.visualstudio.com/).
+
+![Accessing the Redis Database from Redis VS Code Plugin](./pics/accessing_redis_from_vs_code.png)
+
 ## Ressources
 
-* Site officielle de Redis
+* [Redis official site](https://redis.io/)
   * [Redis configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
     * [Configuration file for Redis 7.4.3](https://raw.githubusercontent.com/redis/redis/unstable/redis.conf)
-* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/Redis Insight/configuration/)
+* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/RedisInsight/configuration/)
 * [Creating Redis Cluster using Docker](https://medium.com/commencis/creating-redis-cluster-using-docker-67f65545796d)
 * [Scaling with Redis Cluster](https://redis.io/docs/manual/scaling/)
 * [Redis cluster specification](https://redis.io/docs/reference/cluster-spec/)
@@ -107,14 +137,7 @@ On the first execution of the plugin you will have to answer some questions abou
 * [How to Setup & Configure a Redis Cluster Easily](https://www.dltlabs.com/blog/how-to-setup-configure-a-redis-cluster-easily-573120)
 * [Image Docker Officielle de Redis](https://hub.docker.com/_/redis)
 * [How to Use the Redis Docker Official Image](https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/)
-* [Image Docker Officielle de Redis Insight](https://hub.docker.com/r/redis/Redis Insight)
+* [Official Redis Insight Docker Image](https://hub.docker.com/r/redis/RedisInsight)
 * [Another Redis Desktop Manager](https://goanother.com/)
   * [GitHub](https://github.com/qishibo/AnotherRedisDesktopManager)
   * [Releases](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
-* Docker Networking
-  * [Networking overview](https://docs.docker.com/engine/network/)
-  * [Network drivers](https://docs.docker.com/engine/network/drivers/)
-  * [Les réseaux dans docker-compose.yml](https://www.nicelydev.com/docker/reseau-docker-compose)
-  * [Networking With Docker Compose (Quick Guide)](https://www.netmaker.io/resources/docker-compose-network)
-  * [Networking in Compose](https://docs.docker.com/compose/how-tos/networking/)
-  * [Services top-level elements](https://docs.docker.com/reference/compose-file/services/)
