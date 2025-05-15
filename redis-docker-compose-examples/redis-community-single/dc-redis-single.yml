@@ -1,13 +1,16 @@
 services:
   redis:
     container_name: redis
-    image: redis:latest # To download the latest image
-    # image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
+    #image: redis:latest # To download the latest image - You should avoid to download latest to have a better control on the version you use
+    #image: redis:7.4.3 #  To download a specific version, here the version 7.4.3
+    image: redis:8.0.1 #  To download a specific version, here the version 8.0.1
     ports:
       - 6379:6379 # HOST_PORT:CONTAINER_PORT
     volumes:
-      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
-    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+      #- ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf # For version 7.4.3 and before
+      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis-full.conf # For version 8+
+    #command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ] # For version 7.4.3 and before
+    command: [ "redis-server", "/usr/local/etc/redis/redis-full.conf" ] # For version 8+
     networks:
       - redis_network
   redisinsight:

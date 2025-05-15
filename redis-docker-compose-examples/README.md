@@ -27,6 +27,27 @@ If you are on Windows, you can use WSL or if you have the docker engine installe
 
 ![The running containers (Redis and Redis Insight) in Rancher Desktop](./pics/redis_container_in_rancher_desktop.png)
 
+## Redis configuration
+
+The configuration file of Redis can change from version to version, so you should be particulary wary of the version of the image you download and te associated configuration file.
+Furthermore, starting with the version 8, the file name have changed and the content are quite différent.
+
+### Redis configuration - Before Redis 8.0
+
+The configuration file is named `redis.conf`.
+The `redis.conf` file provided in this project, is  for Redis version 7.4 (the latest version before the 8.x versions).
+The file originated from [here](https://raw.githubusercontent.com/redis/redis/7.4/redis.conf) but has been modified.
+
+There are only two modifications :
+
+* The line `bind 127.0.0.1 -::1` has been commented and is now `# bind 127.0.0.1 -::1`
+* The protected mode is disabled `protected-mode no`
+
+### Redis configuration - From Redis 8.0
+
+Starting version 8 of Redis, the configuration file is now `redis-full.conf`.
+
+
 ## Accessing Redis with the CLI in the container
 
 In a shell, run the following command line : `docker exec -it redis /bin/sh`.
@@ -127,17 +148,20 @@ You can now access your Redis instance directly from [Visual Studio Code](https:
 ## Ressources
 
 * [Redis official site](https://redis.io/)
-  * [Redis configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
-    * [Configuration file for Redis 7.4.3](https://raw.githubusercontent.com/redis/redis/unstable/redis.conf)
-* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/RedisInsight/configuration/)
+  * [Redis configuration](https://redis.io/docs/latest/operate/oss_and_stack/management/config/)
+    * [Configuration file for Redis 7.4](https://raw.githubusercontent.com/redis/redis/7.4/redis.conf)
+    * [Configuration file for Redis 8](https://raw.githubusercontent.com/redis/redis/8.0/redis-full.conf)
+  * [Redis Open Source configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
+  * [Redis Official GitHub](https://github.com/redis/redis)
+* [Image Docker Officielle de Redis](https://hub.docker.com/_/redis)
+* [How to Use the Redis Docker Official Image](https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/)
+* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/redisinsight/configuration/)
+* [Official Redis Insight Docker Image](https://hub.docker.com/r/redis/RedisInsight)
+* [Another Redis Desktop Manager](https://goanother.com/)
+  * [GitHub](https://github.com/qishibo/AnotherRedisDesktopManager)
+  * [Releases](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
 * [Creating Redis Cluster using Docker](https://medium.com/commencis/creating-redis-cluster-using-docker-67f65545796d)
 * [Scaling with Redis Cluster](https://redis.io/docs/manual/scaling/)
 * [Redis cluster specification](https://redis.io/docs/reference/cluster-spec/)
 * [docker-redis-cluster](https://github.com/Grokzen/docker-redis-cluster)
 * [How to Setup & Configure a Redis Cluster Easily](https://www.dltlabs.com/blog/how-to-setup-configure-a-redis-cluster-easily-573120)
-* [Image Docker Officielle de Redis](https://hub.docker.com/_/redis)
-* [How to Use the Redis Docker Official Image](https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/)
-* [Official Redis Insight Docker Image](https://hub.docker.com/r/redis/RedisInsight)
-* [Another Redis Desktop Manager](https://goanother.com/)
-  * [GitHub](https://github.com/qishibo/AnotherRedisDesktopManager)
-  * [Releases](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
