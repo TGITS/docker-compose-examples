@@ -1,19 +1,32 @@
 # Redis
 
-This [small project](https://github.com/TGITS/docker-compose-examples/tree/main/redis-docker-compose-examples) provides a _docker compose file_ and a minimalist directory structure that creates a local environment for the [Redis](https://redis.io/) database to be used for development and experimentation.
+This [small project](https://github.com/TGITS/docker-compose-examples/tree/main/redis-docker-compose-examples) provides _docker compose files_ and a minimalist directory structure that creates a local environment for the [Redis](https://redis.io/) database to be used for development and experimentation.
 Do not use this directly in a production enviroment or at your own risk !
-Two applications are provided by the _docker compose file_:
+
+Several _docker compose files_ are provided respectively for Redis Community, Redis Stack Server and Redis Stack.
+To simplify Redis Stack Server is a Redis Community bundles with additional features (probalistic data structures, queryable JSON documents, time series data) and Redis Stack is a Red Stack Server bundled with Redis Insight.
+
+For the Redis Community two applications are provided by the _docker compose file_:
 
 * A Redis single instance
-* [Redis Insight](https://redis.io/insight/) which is the official Redis Database tool
+* [Redis Insight](https://redis.io/insight/) which is the official Redis database tool
+
+For the Redis Stack Server only the Redis single instance is provided.
+And for the Redis Stack the Redis single instance and a Redis Insight instace are provided.
 
 This project has been developed and tested under Windows 11 Professional with [Docker](https://www.docker.com/) and [Rancher Desktop](https://rancherdesktop.io/). However it should work on Windows, MacOs and Linux, with directly [Docker](https://www.docker.com/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 In all cases you need to have a container engine compatible with `docker` and `docker compose` available in the command line.
 
-On the container with the [Redis](https://redis.io/) database engine, there is also [Redis CLI](https://redis.io/docs/latest/develop/tools/cli/). 
+On the container with the [Redis](https://redis.io/) database engine, there is also [Redis CLI](https://redis.io/docs/latest/develop/tools/cli/).
+
+The Redis versions targeted in the rest of this document is Redis 8 or above.
+As a matter of fact, the way to configure Redis from the previous version is different starting Redis version 8.
+If you need to run a Redis version prior to version 8, this is covered at the end of the document.
 
 ## Running the containers with the Redis instance
+
+### Redis Community
 
 To run the containers and the associated **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-community-single` directory and run the following command :
 
@@ -27,26 +40,45 @@ If you are on Windows, you can use WSL or if you have the docker engine installe
 
 ![The running containers (Redis and Redis Insight) in Rancher Desktop](./pics/redis_container_in_rancher_desktop.png)
 
-## Redis configuration
+### Redis Stack Server
 
-The configuration file of Redis can change from version to version, so you should be particulary wary of the version of the image you download and te associated configuration file.
-Furthermore, starting with the version 8, the file name have changed and the content are quite différent.
+To run the containers and the associated **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-community-single` directory and run the following command :
 
-### Redis configuration - Before Redis 8.0
+```shell
+docker compose -f dc-redis-stack-server.yml up -d
+```
 
-The configuration file is named `redis.conf`.
-The `redis.conf` file provided in this project, is  for Redis version 7.4 (the latest version before the 8.x versions).
-The file originated from [here](https://raw.githubusercontent.com/redis/redis/7.4/redis.conf) but has been modified.
+### Redis Stack
 
-There are only two modifications :
+To run the containers and the associated **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-community-single` directory and run the following command :
 
-* The line `bind 127.0.0.1 -::1` has been commented and is now `# bind 127.0.0.1 -::1`
-* The protected mode is disabled `protected-mode no`
+```shell
+docker compose -f dc-redis-stack.yml up -d
+```
 
-### Redis configuration - From Redis 8.0
+## Redis Community configuration - From Redis 8.0
+
+The configuration file of Redis can change from version to version, so you should be particulary wary of the version of the image you download and the associated configuration file.
+Furthermore, starting with the version 8, the file name has changed and the content is quite different.
 
 Starting version 8 of Redis, the configuration file is now `redis-full.conf`.
 
+The configuration file for Redis Stack Server and Redis Stack is identical.
+
+## Redis Community configuration - Before Redis 8.0
+
+The configuration file of Redis can change from version to version, so you should be particulary wary of the version of the image you download and the associated configuration file.
+
+The configuration and the docker compose file are under `redis-docker-compose-examples/before-redis-v8/redis-community-single` directory.
+
+The configuration file is named `redis.conf` in the version prior to the version 8.
+The `redis.conf` file provided in this project, is  for Redis version 7.4 (the latest version before the 8.x versions).
+The file originated from [here](https://raw.githubusercontent.com/redis/redis/7.4/redis.conf) but has been modified.
+
+There are only two modifications in the provided `redis.conf` :
+
+* The line `bind 127.0.0.1 -::1` has been commented and is now `# bind 127.0.0.1 -::1`
+* The protected mode is disabled `protected-mode no`
 
 ## Accessing Redis with the CLI in the container
 
