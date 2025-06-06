@@ -6,5 +6,3 @@ services:
     ports:
       - 6379:6379 # HOST_PORT:CONTAINER_PORT
       - 8001:8001 # HOST_PORT:CONTAINER_PORT
-    volumes:
-      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis-full.conf # For version 8+

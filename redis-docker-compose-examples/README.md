@@ -5,6 +5,8 @@ Do not use this directly in a production enviroment or at your own risk !
 
 Several _docker compose files_ are provided respectively for Redis Community, Redis Stack Server and Redis Stack.
 To simplify Redis Stack Server is a Redis Community bundles with additional features (probalistic data structures, queryable JSON documents, time series data) and Redis Stack is a Red Stack Server bundled with Redis Insight.
+However, at the time of writing, the Redis Stack Server and Redis Stack were only avaialble for Redis 7.4.4 (the latest version of Redis 7.4).
+You have an understable little wait to use the very latest version of **Redis** with **Redis Stack Server** and **Redis Stack**.
 
 For the Redis Community two applications are provided by the _docker compose file_:
 
@@ -12,7 +14,7 @@ For the Redis Community two applications are provided by the _docker compose fil
 * [Redis Insight](https://redis.io/insight/) which is the official Redis database tool
 
 For the Redis Stack Server only the Redis single instance is provided.
-And for the Redis Stack the Redis single instance and a Redis Insight instace are provided.
+And for the Redis Stack the Redis single instance and a Redis Insight instance are provided.
 
 This project has been developed and tested under Windows 11 Professional with [Docker](https://www.docker.com/) and [Rancher Desktop](https://rancherdesktop.io/). However it should work on Windows, MacOs and Linux, with directly [Docker](https://www.docker.com/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
@@ -20,7 +22,7 @@ In all cases you need to have a container engine compatible with `docker` and `d
 
 On the container with the [Redis](https://redis.io/) database engine, there is also [Redis CLI](https://redis.io/docs/latest/develop/tools/cli/).
 
-The Redis versions targeted in the rest of this document is Redis 8 or above.
+The Redis Community versions targeted in the rest of this document is Redis 8 or above.
 As a matter of fact, the way to configure Redis from the previous version is different starting Redis version 8.
 If you need to run a Redis version prior to version 8, this is covered at the end of the document.
 
@@ -42,7 +44,7 @@ If you are on Windows, you can use WSL or if you have the docker engine installe
 
 ### Redis Stack Server
 
-To run the containers and the associated **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-community-single` directory and run the following command :
+To run the container associated with the **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-stack-server` directory and run the following command :
 
 ```shell
 docker compose -f dc-redis-stack-server.yml up -d
@@ -50,11 +52,16 @@ docker compose -f dc-redis-stack-server.yml up -d
 
 ### Redis Stack
 
-To run the containers and the associated **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-community-single` directory and run the following command :
+To run the containers and the associated **Redis** instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/redis-stack` directory and run the following command :
 
 ```shell
 docker compose -f dc-redis-stack.yml up -d
 ```
+
+With the **Redis Stack** come packaged a instance of [Redis Insight](https://redis.io/insight/) which should be available on the port `8001` of `localhost`.
+There is a dedicated section to [Redis Insight](https://redis.io/insight/) further in this document.
+
+![Initial screen of Redis Insight with Redis Stack](./pics/initial-screen-of-redis-insight-redis-stack.png)
 
 ## Redis Community configuration - From Redis 8.0
 
@@ -80,6 +87,21 @@ There are only two modifications in the provided `redis.conf` :
 * The line `bind 127.0.0.1 -::1` has been commented and is now `# bind 127.0.0.1 -::1`
 * The protected mode is disabled `protected-mode no`
 
+## Redis Stack Server and Redis Stack configuration
+
+Even if it is not demonstrated here in these examples, you can configure Redis and Redis Insight with environment variable as it is done for the Redis Community example. 
+But it seems a little far-fetched in this case.
+One can argue that a docker compose file for Redis Stack Server and Redis Stack is not really necessary, as one can easily run a single docker command line to to do so.
+
+For example to run an instance of **Redis Stack** you can have the following command with just Docker :
+
+```shell
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+```
+
+The docker compose file has been provided for the sake of completude.
+If you prefer using directly docker you should have a look to [Docker Hub](https://hub.docker.com/r/redis/redis-stack).
+
 ## Accessing Redis with the CLI in the container
 
 In a shell, run the following command line : `docker exec -it redis /bin/sh`.
@@ -94,7 +116,7 @@ You can type `quit` to exit `redis-cli` and of course `exit` to exit the shell i
 
 [Redis Insight](https://redis.io/insight/) is available as a Web Application and as a Desktop client. 
 In this paragraph we demonstrate the use of the Web Application deployed as a container along side the Redis instance itself.
-You have to connect to the url `http:\\localhost:5540` with your favorite navigator.
+You have to connect to the url `http:\\localhost:8001` with your favorite navigator.
 
 On your first connexion you will be welcomed with some questions about the privacy settings.
 
@@ -104,9 +126,9 @@ On your first connexion you will be welcomed with some questions about the priva
 
 After answering them, you will access the tool in itself.
 
-![Initial screen of Redis Insight](./pics/initial-screen-of-redis-insight.png)
+![Initial screen of Redis Insight (Redis Community with Redis Insight)](./pics/initial-screen-of-redis-insight.png)
 
-As you can see on the screenshot, the instance is pre-configured with a database on `localhost:6379`.
+In the case of the Docker Compose file with **Redis Community** and **Redis Insight**, as you can see on the previous creenshot, the instance is pre-configured with a database on `localhost:6379`.
 You can see that the hostname, is `redis`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Redis, and can access it directly with its defined hostname.
 
 If you wish, you can edit the alias of the database.
@@ -127,12 +149,41 @@ You land on the _Browser_ page but with the button on the left you can now acces
 You can also install the desktop client which is an Electron app and works in a similar way.
 The only attention point is for the Redis instance host : it should be `127.0.0.1` or `localhost`, as you access the instance form _outside docker_ and not `redis`.
 
+With the **Redis Insight** included in **Redis Stack**, the steps are quasi-identical : you have to connect on `http:\\localhost:8001` and the database is already configured. You are even directly directed to it.
+
+![Initial screen of Redis Insight with Redis Stack](./pics/initial-screen-of-redis-insight-redis-stack.png)
+
+In each case, **Redis Insight** offers to load sample data in Redis.
+
+![Loading sample data](./pics/load_sample_data_in_redis.png)
+
+![Loaded sample data](./pics/loaded_sample_data.png)
+
+![Tetris leaderboard example](./pics/loaded_sample_data_tetris_leaderboard.png)
+
+If you want to experiment with Redis but do not readily have available data it is a good way to start.
+
+
 ## Stopping the container
 
-To stop the container, type the following in the shell, from the directory which contains the docker compose file `dc-redis-single.yml` :
+To stop the container, type the following in the shell, from the directory which contains your docker compose file 
+
+* for the `dc-redis-single.yml` docker compose file:
 
 ```shell
 docker compose -f dc-redis-single.yml down
+```
+
+* for the `dc-redis-stack-server.yml` docker compose file:
+
+```shell
+docker compose -f dc-redis-stack-server.yml down
+```
+
+* for the `dc-redis-stack.yml` docker compose file:
+
+```shell
+docker compose -f dc-redis-stack.yml down
 ```
 
 ## Accessing the Redis instance with Another Redis Desktop Manager
@@ -185,7 +236,9 @@ You can now access your Redis instance directly from [Visual Studio Code](https:
     * [Configuration file for Redis 8](https://raw.githubusercontent.com/redis/redis/8.0/redis-full.conf)
   * [Redis Open Source configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
   * [Redis Official GitHub](https://github.com/redis/redis)
-* [Image Docker Officielle de Redis](https://hub.docker.com/_/redis)
+* [Official Redis Docker Image](https://hub.docker.com/_/redis)
+* [Official Redis Stack Server Docker Image](https://hub.docker.com/r/redis/redis-stack-server)
+* [Official Redis Stack Docker Image](https://hub.docker.com/r/redis/redis-stack)
 * [How to Use the Redis Docker Official Image](https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/)
 * [Redis Insight configuration settings](https://redis.io/docs/latest/operate/redisinsight/configuration/)
 * [Official Redis Insight Docker Image](https://hub.docker.com/r/redis/RedisInsight)

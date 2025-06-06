@@ -84,6 +84,53 @@
 </stylenode>
 </map_styles>
 </hook>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_719469430" CREATED="1749221667271" MODIFIED="1749221667271">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="before-redis-v8" POSITION="bottom_or_right" ID="ID_854369191" CREATED="1749221643310" MODIFIED="1749221657248">
+<node TEXT="redis-community-single" ID="ID_1316693904" CREATED="1708702093527" MODIFIED="1745831993686">
+<font SIZE="14"/>
+<node TEXT="" ID="ID_1230548255" CREATED="1708702349328" MODIFIED="1708702349328">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="dc-redis-single.yml" ID="ID_1921051800" CREATED="1708702157113" MODIFIED="1745832135751"/>
+<node TEXT="" ID="ID_1043052989" CREATED="1708702349325" MODIFIED="1708702349327">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="The docker-compose file to run a redis instance" ID="ID_467542912" CREATED="1708702349330" MODIFIED="1746196952583"/>
+</node>
+<node TEXT="" ID="ID_370806608" CREATED="1747303891759" MODIFIED="1747303891759">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT=".env" ID="ID_1052892092" CREATED="1747303867135" MODIFIED="1747303870831"/>
+<node TEXT="" ID="ID_1945604498" CREATED="1747303891756" MODIFIED="1747303891759">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="Environment variables used by the docker-compose file" ID="ID_1534488451" CREATED="1747303891761" MODIFIED="1747303894011"/>
+</node>
+<node TEXT="redis" ID="ID_55508633" CREATED="1745832061569" MODIFIED="1745832065912">
+<node TEXT="conf" ID="ID_1259612587" CREATED="1745832088185" MODIFIED="1745832093608">
+<node TEXT="" ID="ID_1324619601" CREATED="1746197189633" MODIFIED="1746197189633">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="redis.conf" ID="ID_1586506713" CREATED="1745832105008" MODIFIED="1745832121375"/>
+<node TEXT="" ID="ID_817934352" CREATED="1746197189630" MODIFIED="1746197189633">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="Redis configuration" ID="ID_601120188" CREATED="1746197189634" MODIFIED="1746197202088"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1305544209" CREATED="1749221667265" MODIFIED="1749221667270">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="For Redis before v8" ID="ID_1108806744" CREATED="1749221667273" MODIFIED="1749221683653"/>
+</node>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1281843349" CREATED="1749221799634" MODIFIED="1749221799634">
+<hook NAME="FirstGroupNode"/>
+</node>
 <node TEXT="redis-community-single" POSITION="bottom_or_right" ID="ID_246348881" CREATED="1708702093527" MODIFIED="1745831993686">
 <font SIZE="14"/>
 <node TEXT="" ID="ID_1970842797" CREATED="1708702349328" MODIFIED="1708702349328">
@@ -93,7 +140,7 @@
 <node TEXT="" ID="ID_121908137" CREATED="1708702349325" MODIFIED="1708702349327">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="The docker-compose file to run a redis instance" ID="ID_161419776" CREATED="1708702349330" MODIFIED="1746196952583"/>
+<node TEXT="The docker-compose file to run a Redis Community &amp; Redis Insight Locally" ID="ID_161419776" CREATED="1708702349330" MODIFIED="1749222052470"/>
 </node>
 <node TEXT="" ID="ID_1364304676" CREATED="1747303891759" MODIFIED="1747303891759">
 <hook NAME="FirstGroupNode"/>
@@ -109,7 +156,7 @@
 <node TEXT="" ID="ID_1853012363" CREATED="1746197189633" MODIFIED="1746197189633">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="redis.conf" ID="ID_1803671704" CREATED="1745832105008" MODIFIED="1745832121375"/>
+<node TEXT="redis-full.conf" ID="ID_1803671704" CREATED="1745832105008" MODIFIED="1749221743543"/>
 <node TEXT="" ID="ID_1522568316" CREATED="1746197189630" MODIFIED="1746197189633">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
@@ -118,16 +165,32 @@
 </node>
 </node>
 </node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_460709620" CREATED="1746197032206" MODIFIED="1746197032206">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="assets" POSITION="bottom_or_right" ID="ID_542781415" CREATED="1708702508851" MODIFIED="1708702792406">
-<font SIZE="14"/>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_573771247" CREATED="1746197032201" MODIFIED="1746197032205">
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1333369082" CREATED="1749221799631" MODIFIED="1749221799633">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="Miscellanous documentation files" ID="ID_1332707367" CREATED="1746197032207" MODIFIED="1746197041817"/>
+<node TEXT="For Redis v8+" ID="ID_767134494" CREATED="1749221799635" MODIFIED="1749221803518"/>
+</node>
+<node TEXT="redis-stack" POSITION="bottom_or_right" ID="ID_1126400609" CREATED="1749221761662" MODIFIED="1749221784405">
+<node TEXT="" ID="ID_1058917438" CREATED="1708702349328" MODIFIED="1708702349328">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="dc-redis-stack.yml" ID="ID_54093466" CREATED="1708702157113" MODIFIED="1749221989860"/>
+<node TEXT="" ID="ID_1474817651" CREATED="1708702349325" MODIFIED="1708702349327">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="The docker-compose file to run Redis Stack locally" ID="ID_723104960" CREATED="1708702349330" MODIFIED="1749222018835"/>
+</node>
+</node>
+<node TEXT="redis-stack-server" POSITION="bottom_or_right" ID="ID_139451717" CREATED="1749221770239" MODIFIED="1749221813598">
+<node TEXT="" ID="ID_1092007399" CREATED="1708702349328" MODIFIED="1708702349328">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="dc-redis-stack-server.yml" ID="ID_1050187080" CREATED="1708702157113" MODIFIED="1749221997144"/>
+<node TEXT="" ID="ID_1051535570" CREATED="1708702349325" MODIFIED="1708702349327">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="The docker-compose file to run Redis Stack Server Locally" ID="ID_526266731" CREATED="1708702349330" MODIFIED="1749222031446"/>
+</node>
 </node>
 <node TEXT="" POSITION="bottom_or_right" ID="ID_633219974" CREATED="1708702530455" MODIFIED="1708702530455">
 <hook NAME="FirstGroupNode"/>
@@ -139,6 +202,17 @@
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
 <node TEXT="Pictures used by the README file" ID="ID_1797188113" CREATED="1708702530458" MODIFIED="1708797495531"/>
+</node>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_460709620" CREATED="1746197032206" MODIFIED="1746197032206">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="assets" POSITION="bottom_or_right" ID="ID_542781415" CREATED="1708702508851" MODIFIED="1708702792406">
+<font SIZE="14"/>
+</node>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_573771247" CREATED="1746197032201" MODIFIED="1746197032205">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="Miscellanous documentation files" ID="ID_1332707367" CREATED="1746197032207" MODIFIED="1746197041817"/>
 </node>
 <node TEXT="" POSITION="bottom_or_right" ID="ID_1290367073" CREATED="1708702313274" MODIFIED="1708702313274">
 <hook NAME="FirstGroupNode"/>
