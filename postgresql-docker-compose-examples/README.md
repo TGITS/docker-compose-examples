@@ -279,6 +279,7 @@ The configuration of **Metabase** is identical to the one explained previously.
 
 ## Ressources
 
+* The [blog post on Medium](https://medium.com/norsys-octogone/a-local-environment-for-postgresql-with-docker-compose-7ae68c998068) associated with this repository.
 * [Official PostgreSQL Site](https://www.postgresql.org/)
   * [Official Documentation](https://www.postgresql.org/docs/)
 * [Postgresql Logo](https://wiki.postgresql.org/wiki/Logo)

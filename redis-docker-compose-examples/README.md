@@ -4,7 +4,7 @@ This [small project](https://github.com/TGITS/docker-compose-examples/tree/main/
 Do not use this directly in a production enviroment or at your own risk !
 
 Several _docker compose files_ are provided respectively for Redis Community, Redis Stack Server and Redis Stack.
-To simplify Redis Stack Server is a Redis Community bundles with additional features (probalistic data structures, queryable JSON documents, time series data) and Redis Stack is a Red Stack Server bundled with Redis Insight.
+To simplify, Redis Stack Server is a Redis Community bundles with additional features (probalistic data structures, queryable JSON documents, time series data) and Redis Stack is a Red Stack Server bundled with Redis Insight.
 However, at the time of writing, the Redis Stack Server and Redis Stack were only avaialble for Redis 7.4.4 (the latest version of Redis 7.4).
 You have an understable little wait to use the very latest version of **Redis** with **Redis Stack Server** and **Redis Stack**.
 
