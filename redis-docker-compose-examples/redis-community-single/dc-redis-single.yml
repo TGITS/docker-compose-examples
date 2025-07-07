@@ -6,7 +6,7 @@ services:
     ports:
       - 6379:6379 # HOST_PORT:CONTAINER_PORT
     volumes:
-      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis-full.conf # For version 8+
+      - ./redis/conf/redis-full.conf:/usr/local/etc/redis/redis-full.conf # For version 8+
     command: [ "redis-server", "/usr/local/etc/redis/redis-full.conf" ] # For version 8+
     networks:
       - redis_network

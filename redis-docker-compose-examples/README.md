@@ -24,7 +24,6 @@ On the container with the [Redis](https://redis.io/) database engine, there is a
 
 The Redis Community versions targeted in the rest of this document is Redis 8 or above.
 As a matter of fact, the way to configure Redis from the previous version is different starting Redis version 8.
-If you need to run a Redis version prior to version 8, this is covered at the end of the document.
 
 ## Running the containers with the Redis instance
 
@@ -70,7 +69,7 @@ Furthermore, starting with the version 8, the file name has changed and the cont
 
 Starting version 8 of Redis, the configuration file is now `redis-full.conf`.
 
-The configuration file for Redis Stack Server and Redis Stack is identical.
+The Redis configuration file `redis-full.conf` has not been modified : it is explicitly present in case you need to tailor the configuration of Redis to your needs.
 
 ## Redis Community configuration - Before Redis 8.0
 
@@ -192,7 +191,7 @@ There is at least another alternative for a desktop client : [Another Redis Desk
 You can download [the binary from GitHub](https://github.com/qishibo/AnotherRedisDesktopManager/releases).
 The installation is quite straightforward and you can only get a zip archive.
 
-When you run the executable for the first time, a window similar at the foloowing screenshot should open. 
+When you run the executable for the first time, a window similar to the following screenshot should open. 
 
 ![First connection to Another Redis Desktop Manager](./pics/ardm_001_first-time_execution.png)
 
