@@ -1,14 +1,13 @@
 # MongoDB
 
-This [small project](https://github.com/TGITS/docker-compose-examples) provides a _docker compose file_ and a minimalist directory structure that creates a local environment for the [MongoDB](https://www.mongodb.com/) database to be used for development and experimentation.
+This [small project](https://github.com/TGITS/docker-compose-examples/tree/main/mongodb-docker-compose-examples) provides a _docker compose file_ and a minimalist directory structure that creates a local environment for the [MongoDB](https://www.mongodb.com/) database to be used for development and experimentation.
 Do not use this directly in a production enviroment or at your own risk !
 Two applications are provided by the _docker compose file_:
 
 * A MongoDB single instance
 * [mongo-express](https://github.com/mongo-express/mongo-express) which is a web-based MongoDB administration interface.
 
-This project has been developed and tested under Windows 11 Professional with [Podman](https://podman.io/) and Podman Desktop.
-However it should work on Windows, Mac and Linux, with [Docker](https://www.docker.com/), [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Rancher Desktop](https://rancherdesktop.io/).
+This project has been developed and tested under Windows 11 Professional with [Docker](https://www.docker.com/) and [Rancher Desktop](https://rancherdesktop.io/). However it should work on Windows, MacOs and Linux, with directly [Docker](https://www.docker.com/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 In all cases you need to have a container engine compatible with `docker` and `docker compose` available in the command line.
 

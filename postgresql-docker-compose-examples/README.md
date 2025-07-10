@@ -1,5 +1,20 @@
 # Simple Docker Compose for a Single Instance Postgresql
 
+I have created [a small project on GitHub](https://github.com/TGITS/docker-compose-examples/tree/main/postgresql-docker-compose-examples) that provides a docker compose file and a basic directory structure to have a local development environment with a [PostgreSQL](https://www.postgresql.org/) database.
+Do not use this directly in a production enviroment or at your own risk !
+
+Three applications are provided by the _docker compose file_:
+
+* A [PostgreSQL](https://www.postgresql.org/) single instance
+* [pgAdmin][(https://github.com/mongo-express/mongo-express](https://www.pgadmin.org/)) which is a web-based PostgreSQL administration and developement platform.
+* [Metabase](https://www.metabase.com/) which is a _business intelligence_/_analytics_ platform.
+
+This project has been developed and tested under Windows 11 Professional with [Docker](https://www.docker.com/) and [Rancher Desktop](https://rancherdesktop.io/). However it should work on Windows, MacOs and Linux, with directly [Docker](https://www.docker.com/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+In all cases you need to have a container engine compatible with `docker` and `docker compose` available in the command line.
+
+On the container with the [PostgreSQL](https://www.postgresql.org/) database engine, there is also [psql](https://www.postgresql.org/docs/current/app-psql.html) which is a shell to interact with the database.
+
 ## Running the container with the Postgresql instance
 
 To run the container and the associated with the associated Postgresql instance using `docker compose`, open a shell on your computer go to the `postgresql-docker-compose-examples/postgresql-complete` directory and run the following
@@ -70,7 +85,7 @@ To configure **pgAdmin** :
 
 ## Accessing the PostgreSQL instance with Metabase
 
-Metabase is not a database tool like **pgAdmin** or **DBeaver**. It is a _business intelligence_/_analytics_ platform : you will not directly do low level SQL requests or working directly on the Database. It's a tool to manipulate you data to extract information from them. 
+[Metabase](https://www.metabase.com/) is not a database tool like **pgAdmin** or **DBeaver**. It is a _business intelligence_/_analytics_ platform : you will not directly do low level SQL requests or working directly on the Database. It's a tool to manipulate you data to extract information from them. 
 As such it does not have the same use as pgAdmin but can be useful in its own right depending on your needs.
 
 When the containers are up, metabase will be available on `localhost:5434`.
@@ -264,6 +279,7 @@ The configuration of **Metabase** is identical to the one explained previously.
 
 ## Ressources
 
+* The [blog post on Medium](https://medium.com/norsys-octogone/a-local-environment-for-postgresql-with-docker-compose-7ae68c998068) associated with this repository.
 * [Official PostgreSQL Site](https://www.postgresql.org/)
   * [Official Documentation](https://www.postgresql.org/docs/)
 * [Postgresql Logo](https://wiki.postgresql.org/wiki/Logo)

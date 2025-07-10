@@ -1,0 +1,7 @@
+services:
+  redis:
+    container_name: redis-stack-server
+    #image: redis/redis-stack-server:latest # To download the latest image - You should avoid to download latest to have a better control on the version you use
+    image: redis/redis-stack-server:7.4.0-v5 #  To download a specific version, here the version 7.4.0-v5
+    ports:
+      - 6379:6379 # HOST_PORT:CONTAINER_PORT
