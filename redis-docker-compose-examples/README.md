@@ -88,7 +88,7 @@ There are only two modifications in the provided `redis.conf` :
 
 ## Redis Stack Server and Redis Stack configuration
 
-Even if it is not demonstrated here in these examples, you can configure Redis and Redis Insight with environment variable as it is done for the Redis Community example. 
+Even if it is not demonstrated here in these examples, you can configure Redis and Redis Insight with environment variables as it is done for the Redis Community example. 
 But it seems a little far-fetched in this case.
 One can argue that a docker compose file for Redis Stack Server and Redis Stack is not really necessary, as one can easily run a single docker command line to to do so.
 
@@ -98,8 +98,8 @@ For example to run an instance of **Redis Stack** you can have the following com
 docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
 
-The docker compose file has been provided for the sake of completude.
-If you prefer using directly docker you should have a look to [Docker Hub](https://hub.docker.com/r/redis/redis-stack).
+However the docker compose file has been provided for the sake of completude.
+If you prefer using directly docker you should have a look to [Docker Hub](https://hub.docker.com/r/redis/redis-stack) where you can find several docker commands with different examples of parameters.
 
 ## Accessing Redis with the CLI in the container
 
@@ -115,7 +115,7 @@ You can type `quit` to exit `redis-cli` and of course `exit` to exit the shell i
 
 [Redis Insight](https://redis.io/insight/) is available as a Web Application and as a Desktop client. 
 In this paragraph we demonstrate the use of the Web Application deployed as a container along side the Redis instance itself.
-You have to connect to the url `http:\\localhost:8001` with your favorite navigator.
+You have to connect to the url `http:\\localhost:8001` with your favorite browser.
 
 On your first connexion you will be welcomed with some questions about the privacy settings.
 
@@ -127,7 +127,7 @@ After answering them, you will access the tool in itself.
 
 ![Initial screen of Redis Insight (Redis Community with Redis Insight)](./pics/initial-screen-of-redis-insight.png)
 
-In the case of the Docker Compose file with **Redis Community** and **Redis Insight**, as you can see on the previous creenshot, the instance is pre-configured with a database on `localhost:6379`.
+In the case of the Docker Compose file with **Redis Community** and **Redis Insight**, as you can see on the previous screenshot, the instance is pre-configured with a database on `localhost:6379`.
 You can see that the hostname, is `redis`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Redis, and can access it directly with its defined hostname.
 
 If you wish, you can edit the alias of the database.
@@ -146,7 +146,7 @@ You land on the _Browser_ page but with the button on the left you can now acces
 ![Accessing the workbench](./pics/accessing_the_workbench.png)
 
 You can also install the desktop client which is an Electron app and works in a similar way.
-The only attention point is for the Redis instance host : it should be `127.0.0.1` or `localhost`, as you access the instance form _outside docker_ and not `redis`.
+The only attention point is for the Redis instance host : it should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ and not `redis`.
 
 With the **Redis Insight** included in **Redis Stack**, the steps are quasi-identical : you have to connect on `http:\\localhost:8001` and the database is already configured. You are even directly directed to it.
 
@@ -197,7 +197,7 @@ When you run the executable for the first time, a window similar to the followin
 
 When you click on the button `New Connection` on the left-side top corner, a new window should open.
 In this new window you can enter the settings for this new connection.
-To connect to the dockerised local instance, you will note that the host should be `127.0.0.1` or `localhost`, as you access the instance form _outside docker_ so to speak. As such the host is not `redis` as it was for the dockerised Redis Insight.
+To connect to the dockerised local instance, you will note that the host should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ so to speak. As such the host is not `redis` as it was for the dockerised Redis Insight.
 
 ![Creating a new Connection in Another Redis Desktop Manager](./pics/ardm_002_new_connection.png)
 
