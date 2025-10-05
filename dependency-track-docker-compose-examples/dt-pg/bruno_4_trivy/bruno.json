@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "bruno_4_trivy",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Trivy Healthcheck
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:9000/healthz
+  body: none
+  auth: none
+}

@@ -19,7 +19,8 @@ services:
       - postgres_network
   
   dtrack-apiserver:
-    image: dependencytrack/apiserver
+    image: dependencytrack/apiserver:latest
+    #image: dependencytrack/apiserver:snapshot
     container_name: dtrack-apiserver
     depends_on:
       - postgres
@@ -66,7 +67,8 @@ services:
       - postgres_network
 
   dtrack-frontend:
-    image: dependencytrack/frontend
+    image: dependencytrack/frontend:latest
+    #image: dependencytrack/frontend:snapshot
     container_name: dtrack-frontend
     depends_on:
       - dtrack-apiserver
@@ -85,8 +87,21 @@ services:
       # volumes:
       # - "/host/path/to/config.json:/app/static/config.json"
     ports:
-      - "8080:8080"
+      - "8080:8080" # HOST_PORT:CONTAINER_PORT
     restart: unless-stopped
+    networks:
+      - postgres_network
+
+  trivy-server:
+    image: aquasec/trivy:latest
+    container_name: trivy-server
+    volumes:
+      - 'trivy_cache_data:/root/.cache/'
+    entrypoint: trivy server --listen 0.0.0.0:9000 --token ${TRIVY_SERVER_TOKEN}
+    depends_on:
+      - dtrack-apiserver
+    ports:
+      - "9000:9000" # HOST_PORT:CONTAINER_PORT
     networks:
       - postgres_network
 
@@ -94,6 +109,8 @@ volumes:
   postgresql_data:
     driver: local
   dependency_track:
+    driver: local
+  trivy_cache_data:
     driver: local
 
 networks:
