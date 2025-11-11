@@ -1,8 +1,8 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="postgresql-docker-compose-examples" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1090958577" CREATED="1409300609620" MODIFIED="1746016238147">
+<node TEXT="dependency-track-docker-compose-examples" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1090958577" CREATED="1409300609620" MODIFIED="1762869346156">
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
-<font SIZE="14" BOLD="true"/>
+<font SIZE="12" BOLD="true"/>
 <hook NAME="MapStyle" background="#f9f9f8ff">
     <properties show_icon_for_attributes="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" show_note_icons="true" associatedTemplateLocation="template:/light_nord_template.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
     <tags category_separator="::"/>
@@ -87,247 +87,77 @@
 <node TEXT="" POSITION="bottom_or_right" ID="ID_1641503944" CREATED="1746624781518" MODIFIED="1746624781518">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="postgresql-complete" POSITION="bottom_or_right" ID="ID_1169844661" CREATED="1746624593752" MODIFIED="1746624613097">
-<node TEXT="initdb.d" ID="ID_680873594" CREATED="1708702111696" MODIFIED="1746624952955" TEXT_SHORTENED="true">
+<node TEXT="dt-pg" POSITION="bottom_or_right" ID="ID_1169844661" CREATED="1746624593752" MODIFIED="1762869370248">
+<node TEXT="bruno_4_trivy" POSITION="bottom_or_right" ID="ID_680873594" CREATED="1708702111696" MODIFIED="1762869439835" TEXT_SHORTENED="true">
 <node TEXT="" ID="ID_920342543" CREATED="1746625138812" MODIFIED="1746625138812">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="init.sql" ID="ID_800137196" CREATED="1746624997121" MODIFIED="1746625002727"/>
+<node TEXT="bruno.json" ID="ID_800137196" CREATED="1746624997121" MODIFIED="1762869478093"/>
 <node TEXT="" ID="ID_1405001926" CREATED="1746625138812" MODIFIED="1746625138812">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="SQL execute on first execution to create a table and load data from pokemon.csv" ID="ID_241245982" CREATED="1746625138812" MODIFIED="1746625188531"/>
+<node TEXT="Configuration file for Bruno" ID="ID_241245982" CREATED="1746625138812" MODIFIED="1762869490001"/>
 </node>
 <node TEXT="" ID="ID_1835349870" CREATED="1746625197369" MODIFIED="1746625197369">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="pokemon.csv" ID="ID_493931259" CREATED="1746625004273" MODIFIED="1746625010776"/>
+<node TEXT="Trivy Healthcheck.bru" ID="ID_493931259" CREATED="1746625004273" MODIFIED="1762869471632"/>
 <node TEXT="" ID="ID_736830815" CREATED="1746625197365" MODIFIED="1746625197365">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="CSV File with data to load in the table" ID="ID_1653335650" CREATED="1746625197369" MODIFIED="1746625210739"/>
+<node TEXT="Healthcheck requests for Trivy Server" ID="ID_1653335650" CREATED="1746625197369" MODIFIED="1762869532819"/>
 </node>
 </node>
-<node TEXT="" ID="ID_42504911" CREATED="1746625042470" MODIFIED="1746625042470">
+<node TEXT="" POSITION="bottom_or_right" ID="ID_42504911" CREATED="1746625042470" MODIFIED="1746625042470">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="pgadmin_config_dir" ID="ID_682043576" CREATED="1746624964245" MODIFIED="1746624978143"/>
-<node TEXT="" ID="ID_1976046598" CREATED="1746625042470" MODIFIED="1746625042470">
+<node TEXT="dependency_track" POSITION="bottom_or_right" ID="ID_682043576" CREATED="1746624964245" MODIFIED="1762869546081"/>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1976046598" CREATED="1746625042470" MODIFIED="1746625042470">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="An empty directory mapped to the directory /pgadmin4 inside the container" ID="ID_1400516558" CREATED="1746625042470" MODIFIED="1746625115266"/>
+<node TEXT="An empty directory mapped to the directory /data inside the container for Dependency Track API Server" ID="ID_1400516558" CREATED="1746625042470" MODIFIED="1762869682353"/>
 </node>
-<node TEXT="" ID="ID_1945330063" CREATED="1746625054222" MODIFIED="1746625054222">
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1945330063" CREATED="1746625054222" MODIFIED="1746625054222">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="pgadmin_working_dir" ID="ID_18587990" CREATED="1746624979581" MODIFIED="1746624995298"/>
-<node TEXT="" ID="ID_1668628293" CREATED="1746625054222" MODIFIED="1746625054222">
+<node TEXT="trivy_cache_data" POSITION="bottom_or_right" ID="ID_18587990" CREATED="1746624979581" MODIFIED="1762869571748"/>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1668628293" CREATED="1746625054222" MODIFIED="1746625054222">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="An empty directory mapped to the directory /var/lib/pgadmin inside the container" ID="ID_1210450260" CREATED="1746625054222" MODIFIED="1746625120386"/>
+<node TEXT="An empty directory mapped to the directory /root/.cache/ inside the container for Trivy Server" ID="ID_1210450260" CREATED="1746625054222" MODIFIED="1762869666101"/>
 </node>
-<node TEXT="" ID="ID_1922606632" CREATED="1746624925625" MODIFIED="1746624925625">
+<node TEXT="" POSITION="bottom_or_right" ID="ID_635289492" CREATED="1762869742310" MODIFIED="1762869742310">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="postgresql_data" ID="ID_110036216" CREATED="1746624878826" MODIFIED="1746624935268"/>
-<node TEXT="" ID="ID_729177011" CREATED="1746624925623" MODIFIED="1746624925625">
+<node TEXT="postgresql_data" POSITION="bottom_or_right" ID="ID_110036216" CREATED="1746624878826" MODIFIED="1746624935268"/>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_115585929" CREATED="1762869742309" MODIFIED="1762869742310">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="An empty directory mapped to the directory /var/lib/postgresql/data inside the container" ID="ID_1460816780" CREATED="1746624925625" MODIFIED="1746625026927"/>
+<node TEXT="An empty directory mapped to the directory /var/lib/postgresql/data inside the container" ID="ID_1464205434" CREATED="1762869742310" MODIFIED="1762869744685"/>
 </node>
-<node TEXT="" ID="ID_1545276134" CREATED="1708702371454" MODIFIED="1708702371454">
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1545276134" CREATED="1708702371454" MODIFIED="1708702371454">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT=".env" ID="ID_1820794643" CREATED="1708702148256" MODIFIED="1708702154967"/>
-<node TEXT="" ID="ID_441126563" CREATED="1708702371452" MODIFIED="1708702371453">
+<node TEXT=".env" POSITION="bottom_or_right" ID="ID_1820794643" CREATED="1708702148256" MODIFIED="1708702154967"/>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_441126563" CREATED="1708702371452" MODIFIED="1708702371453">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
 <node TEXT="Environment variables used by the docker-compose file" ID="ID_1735555560" CREATED="1708702371455" MODIFIED="1708702389151"/>
 </node>
-<node TEXT="" ID="ID_130268479" CREATED="1708702349328" MODIFIED="1708702349328">
+<node TEXT="" POSITION="bottom_or_right" ID="ID_130268479" CREATED="1708702349328" MODIFIED="1708702349328">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="dc-postgresql-complete.yml" ID="ID_1574669780" CREATED="1708702157113" MODIFIED="1746624894752"/>
-<node TEXT="" ID="ID_1864789228" CREATED="1708702349325" MODIFIED="1708702349327">
+<node TEXT="dc-dt-pg.yml" POSITION="bottom_or_right" ID="ID_1574669780" CREATED="1708702157113" MODIFIED="1762869784617"/>
+<node TEXT="" POSITION="bottom_or_right" ID="ID_1864789228" CREATED="1708702349325" MODIFIED="1708702349327">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="The docker-compose file to run a postgreSQL instance along with pgAdmin and Metabase" ID="ID_1076969202" CREATED="1708702349330" MODIFIED="1746624908328"/>
+<node TEXT="The docker-compose file to run Dependency Track witth a postgreSQL instance" ID="ID_1076969202" CREATED="1708702349330" MODIFIED="1762869802124"/>
 </node>
 </node>
 <node TEXT="" POSITION="bottom_or_right" ID="ID_224608294" CREATED="1746624781514" MODIFIED="1746624781518">
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="For running a container with an instance of PostgreSQL, an instance of pgAdmin and an instance of Metabase" ID="ID_503369856" CREATED="1746624781518" MODIFIED="1746624850353"/>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_933068954" CREATED="1746625257974" MODIFIED="1746625257974">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="postgresql-pgadmin" FOLDED="true" POSITION="bottom_or_right" ID="ID_1846866663" CREATED="1746624618004" MODIFIED="1746625400543">
-<node TEXT="initdb.d" ID="ID_1819968750" CREATED="1708702111696" MODIFIED="1746624952955" TEXT_SHORTENED="true">
-<node TEXT="" ID="ID_77680743" CREATED="1746625138812" MODIFIED="1746625138812">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="init.sql" ID="ID_623341819" CREATED="1746624997121" MODIFIED="1746625002727"/>
-<node TEXT="" ID="ID_1325015606" CREATED="1746625138812" MODIFIED="1746625138812">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="SQL execute on first execution to create a table and load data from pokemon.csv" ID="ID_529301753" CREATED="1746625138812" MODIFIED="1746625188531"/>
-</node>
-<node TEXT="" ID="ID_1256326954" CREATED="1746625197369" MODIFIED="1746625197369">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="pokemon.csv" ID="ID_183917476" CREATED="1746625004273" MODIFIED="1746625010776"/>
-<node TEXT="" ID="ID_1343395863" CREATED="1746625197365" MODIFIED="1746625197365">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="CSV File with data to load in the table" ID="ID_1690907612" CREATED="1746625197369" MODIFIED="1746625210739"/>
-</node>
-</node>
-<node TEXT="" ID="ID_1873073226" CREATED="1746625042470" MODIFIED="1746625042470">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="pgadmin_config_dir" ID="ID_1909146969" CREATED="1746624964245" MODIFIED="1746624978143"/>
-<node TEXT="" ID="ID_882107856" CREATED="1746625042470" MODIFIED="1746625042470">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="An empty directory mapped to the directory /pgadmin4 inside the container" ID="ID_465455622" CREATED="1746625042470" MODIFIED="1746625115266"/>
-</node>
-<node TEXT="" ID="ID_1334853432" CREATED="1746625054222" MODIFIED="1746625054222">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="pgadmin_working_dir" ID="ID_1398566652" CREATED="1746624979581" MODIFIED="1746625400541"/>
-<node TEXT="" ID="ID_1032799506" CREATED="1746625054222" MODIFIED="1746625054222">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="An empty directory mapped to the directory /var/lib/pgadmin inside the container" ID="ID_1360863942" CREATED="1746625054222" MODIFIED="1746625120386"/>
-</node>
-<node TEXT="" ID="ID_560557888" CREATED="1746624925625" MODIFIED="1746624925625">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="postgresql_data" ID="ID_571660611" CREATED="1746624878826" MODIFIED="1746624935268"/>
-<node TEXT="" ID="ID_816389593" CREATED="1746624925623" MODIFIED="1746624925625">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="An empty directory mapped to the directory /var/lib/postgresql/data inside the container" ID="ID_1010125367" CREATED="1746624925625" MODIFIED="1746625026927"/>
-</node>
-<node TEXT="" ID="ID_1841734772" CREATED="1708702371454" MODIFIED="1708702371454">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT=".env" ID="ID_631553438" CREATED="1708702148256" MODIFIED="1708702154967"/>
-<node TEXT="" ID="ID_1430266745" CREATED="1708702371452" MODIFIED="1708702371453">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="Environment variables used by the docker-compose file" ID="ID_550338799" CREATED="1708702371455" MODIFIED="1708702389151"/>
-</node>
-<node TEXT="" ID="ID_1263828094" CREATED="1708702349328" MODIFIED="1708702349328">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="dc-postgresql-pgadmin.yml" ID="ID_1606792617" CREATED="1708702157113" MODIFIED="1746625294751"/>
-<node TEXT="" ID="ID_933457291" CREATED="1708702349325" MODIFIED="1708702349327">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="The docker-compose file to run a postgreSQL instance along with pgAdmin" ID="ID_1799787425" CREATED="1708702349330" MODIFIED="1746625299207"/>
-</node>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_1092679026" CREATED="1746625257974" MODIFIED="1746625257974">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="For running a container with an instance of PostgreSQL and an instance of pgAdmin" ID="ID_1824476829" CREATED="1746625257974" MODIFIED="1746625273551"/>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_1888914339" CREATED="1746625361423" MODIFIED="1746625361423">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="postgresql-metabase" FOLDED="true" POSITION="bottom_or_right" ID="ID_769376052" CREATED="1746624632549" MODIFIED="1746624645772">
-<node TEXT="initdb.d" ID="ID_1523108579" CREATED="1708702111696" MODIFIED="1746624952955" TEXT_SHORTENED="true">
-<node TEXT="" ID="ID_726404412" CREATED="1746625138812" MODIFIED="1746625138812">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="init.sql" ID="ID_1569222099" CREATED="1746624997121" MODIFIED="1746625002727"/>
-<node TEXT="" ID="ID_1800020617" CREATED="1746625138812" MODIFIED="1746625138812">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="SQL execute on first execution to create a table and load data from pokemon.csv" ID="ID_236541195" CREATED="1746625138812" MODIFIED="1746625188531"/>
-</node>
-<node TEXT="" ID="ID_1395615537" CREATED="1746625197369" MODIFIED="1746625197369">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="pokemon.csv" ID="ID_25337496" CREATED="1746625004273" MODIFIED="1746625010776"/>
-<node TEXT="" ID="ID_884780778" CREATED="1746625197365" MODIFIED="1746625197365">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="CSV File with data to load in the table" ID="ID_1357458482" CREATED="1746625197369" MODIFIED="1746625210739"/>
-</node>
-</node>
-<node TEXT="" ID="ID_916685455" CREATED="1746624925625" MODIFIED="1746624925625">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="postgresql_data" ID="ID_1178628314" CREATED="1746624878826" MODIFIED="1746624935268"/>
-<node TEXT="" ID="ID_672714461" CREATED="1746624925623" MODIFIED="1746624925625">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="An empty directory mapped to the directory /var/lib/postgresql/data inside the container" ID="ID_1982352168" CREATED="1746624925625" MODIFIED="1746625026927"/>
-</node>
-<node TEXT="" ID="ID_1871283506" CREATED="1708702371454" MODIFIED="1708702371454">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT=".env" ID="ID_926033116" CREATED="1708702148256" MODIFIED="1708702154967"/>
-<node TEXT="" ID="ID_1751555500" CREATED="1708702371452" MODIFIED="1708702371453">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="Environment variables used by the docker-compose file" ID="ID_1558179490" CREATED="1708702371455" MODIFIED="1708702389151"/>
-</node>
-<node TEXT="" ID="ID_1091629545" CREATED="1708702349328" MODIFIED="1708702349328">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="dc-postgresql-metabase.yml" ID="ID_194489408" CREATED="1708702157113" MODIFIED="1746625341971"/>
-<node TEXT="" ID="ID_421498586" CREATED="1708702349325" MODIFIED="1708702349327">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="The docker-compose file to run a postgreSQL instance along with Metabase" ID="ID_1060683828" CREATED="1708702349330" MODIFIED="1746625347670"/>
-</node>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_1773100542" CREATED="1746625361422" MODIFIED="1746625361423">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="For running a container with an instance of PostgreSQL, an instance of pgAdmin and an instance of Metabase" ID="ID_719807625" CREATED="1746625361423" MODIFIED="1746625364004"/>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_553362171" CREATED="1746016176284" MODIFIED="1746016176284">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="postgresql-only" POSITION="bottom_or_right" ID="ID_246348881" CREATED="1708702093527" MODIFIED="1746016238140" TEXT_SHORTENED="true">
-<font SIZE="14"/>
-<node TEXT="" ID="ID_1107507287" CREATED="1745679728443" MODIFIED="1745679728443">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="postgresql_data" ID="ID_37749192" CREATED="1708702111696" MODIFIED="1746016240363" TEXT_SHORTENED="true"/>
-<node TEXT="" ID="ID_179325364" CREATED="1745679728436" MODIFIED="1745679728442">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="Actually an empty directory mapped to the directory /var/lib/postgresql/data inside the container" ID="ID_765460993" CREATED="1745679728445" MODIFIED="1745679810674"/>
-</node>
-<node TEXT="" ID="ID_922232707" CREATED="1708702371454" MODIFIED="1708702371454">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT=".env" ID="ID_367997903" CREATED="1708702148256" MODIFIED="1708702154967"/>
-<node TEXT="" ID="ID_1710744985" CREATED="1708702371452" MODIFIED="1708702371453">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="Environment variables used by the docker-compose file" ID="ID_1585318164" CREATED="1708702371455" MODIFIED="1708702389151"/>
-</node>
-<node TEXT="" ID="ID_1970842797" CREATED="1708702349328" MODIFIED="1708702349328">
-<hook NAME="FirstGroupNode"/>
-</node>
-<node TEXT="dc-postgresql-only.yml" ID="ID_1216405956" CREATED="1708702157113" MODIFIED="1746016163874"/>
-<node TEXT="" ID="ID_121908137" CREATED="1708702349325" MODIFIED="1708702349327">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="The docker-compose file to run a postgreSQL instance" ID="ID_161419776" CREATED="1708702349330" MODIFIED="1745679830076"/>
-</node>
-</node>
-<node TEXT="" POSITION="bottom_or_right" ID="ID_1465166544" CREATED="1746016176265" MODIFIED="1746016176284">
-<hook NAME="SummaryNode"/>
-<hook NAME="AlwaysUnfoldedNode"/>
-<node TEXT="For running &quot;only&quot; a container with an instance of PostgreSQL (no table and data initialization)" ID="ID_897084745" CREATED="1746016176288" MODIFIED="1746625391029"/>
+<node TEXT="For running a container with an instance of Dependency Track using a PostgreSQL instance" ID="ID_503369856" CREATED="1746624781518" MODIFIED="1762869395918"/>
 </node>
 <node TEXT="" POSITION="bottom_or_right" ID="ID_1298465235" CREATED="1708702562942" MODIFIED="1708702562942">
 <hook NAME="FirstGroupNode"/>

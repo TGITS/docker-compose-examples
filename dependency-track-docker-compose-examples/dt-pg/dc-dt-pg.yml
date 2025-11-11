@@ -15,6 +15,12 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432" # HOST_PORT:CONTAINER_PORT
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
     networks:
       - postgres_network
   
@@ -23,7 +29,8 @@ services:
     #image: dependencytrack/apiserver:snapshot
     container_name: dtrack-apiserver
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       # The Dependency-Track container can be configured using any of the
       # available configuration properties defined in:
@@ -59,33 +66,25 @@ services:
     ports:
       - '8081:8080'
     volumes:
-    # Optional volume mount to override default notification publisher templates
-    # - "/host/path/to/template/base/dir:/data/templates"
       - 'dependency_track:/data'
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -t 1 -T 3 --no-proxy -q -O /dev/null http://127.0.0.1:8080$${CONTEXT}health || exit 1" ]
+      interval: 30s
+      start_period: 60s
+      timeout: 3s
     restart: unless-stopped
     networks:
       - postgres_network
 
   dtrack-frontend:
     image: dependencytrack/frontend:latest
-    #image: dependencytrack/frontend:snapshot
     container_name: dtrack-frontend
     depends_on:
-      - dtrack-apiserver
+      dtrack-apiserver:
+        condition: service_healthy
     environment:
       # The base URL of the API server.
-      # NOTE:
-      #   * This URL must be reachable by the browsers of your users.
-      #   * The frontend container itself does NOT communicate with the API server directly, it just serves static files.
-      #   * When deploying to dedicated servers, please use the external IP or domain of the API server.
       - API_BASE_URL=http://localhost:8081
-      # - "OIDC_ISSUER="
-      # - "OIDC_CLIENT_ID="
-      # - "OIDC_SCOPE="
-      # - "OIDC_FLOW="
-      # - "OIDC_LOGIN_BUTTON_TEXT="
-      # volumes:
-      # - "/host/path/to/config.json:/app/static/config.json"
     ports:
       - "8080:8080" # HOST_PORT:CONTAINER_PORT
     restart: unless-stopped
@@ -102,6 +101,7 @@ services:
       - dtrack-apiserver
     ports:
       - "9000:9000" # HOST_PORT:CONTAINER_PORT
+    restart: unless-stopped
     networks:
       - postgres_network
 
