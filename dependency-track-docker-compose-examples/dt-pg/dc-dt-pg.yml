@@ -2,11 +2,11 @@ services:
   postgres:
     # see https://hub.docker.com/_/postgres for list of postgres image versions on docker hub
     #image: postgres:latest # To download the latest image
-    #image: postgres:17.4-alpine # To download a specific version, here the version 17.4 of Postgresql under an alpine linux distribution
-    image: postgres:17.4 # To download a specific version, here the version 17.4 of Postgresql
+    #image: postgres:18.1-alpine # To download a specific version, here the version 18.1 of Postgresql under an alpine linux distribution
+    image: postgres:18.1 # To download a specific version, here the version 18.1 of Postgresql
     container_name: postgres
     volumes:
-      - 'postgresql_data:/var/lib/postgresql/data'
+      - 'postgresql_data:/var/lib/postgresql'
     env_file:
       - .env    
     environment:
@@ -26,7 +26,6 @@ services:
   
   dtrack-apiserver:
     image: dependencytrack/apiserver:latest
-    #image: dependencytrack/apiserver:snapshot
     container_name: dtrack-apiserver
     depends_on:
       postgres:
