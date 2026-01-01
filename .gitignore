@@ -209,3 +209,4 @@
 /redis-docker-compose-examples/redis-community-single/redisinsight/data/commands
 /redis-docker-compose-examples/redis-community-single/redisinsight/data/content
 /redis-docker-compose-examples/redis-community-single/redisinsight/data/plugins
+*.rdb

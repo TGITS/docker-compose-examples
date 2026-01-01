@@ -1,0 +1,33 @@
+services:
+  valkey:
+    container_name: valkey
+    #image: valkey/valkey:latest # To download the latest image - You should avoid to download latest to have a better control on the version you use
+    image: valkey/valkey:9.0.1 #  To download a specific version, here the version 9.0.1
+    ports:
+      - 6379:6379 # HOST_PORT:CONTAINER_PORT
+    volumes:
+      - ./valkey/data:/data
+      - ./valkey/conf:/usr/local/etc/valkey
+    command: [ "valkey-server", "/usr/local/etc/valkey/valkey.conf" ]
+    networks:
+      - valkey_network
+  redisinsight:
+    container_name: redisinsight
+    image: redis/redisinsight:latest # To download the latest image
+    env_file:
+      - .env    
+    environment:
+      RI_APP_PORT: ${RI_APP_PORT}
+      RI_APP_HOST: ${RI_APP_HOST}
+      RI_LOG_LEVEL: ${RI_LOG_LEVEL}
+      RI_FILES_LOGGER: ${RI_FILES_LOGGER}
+      RI_REDIS_HOST: ${RI_REDIS_HOST}
+    ports:
+      - 8001:5540 # HOST_PORT:CONTAINER_PORT
+    networks:
+      - valkey_network
+    depends_on:
+      - valkey
+networks:
+  valkey_network:
+    driver: bridge
