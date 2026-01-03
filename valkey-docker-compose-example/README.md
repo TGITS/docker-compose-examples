@@ -9,10 +9,10 @@ As such, it allows you to utilize advanced data structures and search capabiliti
 
 In each  two applications are provided by the _docker compose file_:
 
-* A Redis single instance
-* [Redis Insight](https://redis.io/insight/) which is a Redis database tool compatible with Valkey.
+* A Valkey (single) instance
+* [Redis Insight](https://redis.io/insight/) which is a Redis database tool for Redis but compatible with Valkey.
 
-Valkey is originally an open source fork of [Redis](https://redis.io/) and as such it can be accessed with tool as Redis Insight.
+Valkey is originally an open source fork of [Redis](https://redis.io/) and as such it can be accessed with tool as [Redis Insight](https://redis.io/insight/).
 
 This project has been developed and tested under Windows 11 Professional with [Docker](https://www.docker.com/) and [Rancher Desktop](https://rancherdesktop.io/). However it should work on Windows, MacOs and Linux, with directly [Docker](https://www.docker.com/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
@@ -32,9 +32,9 @@ docker compose -f dc-valkey-single.yml up -d
 
 If you are on Windows, you can use WSL or if you have the docker engine installed (via Docker Desktop or Rancher Desktop) you can use Windows Powershell.
 
-![Running docker compose with dc-valkey-single.yml](./pics/docker-compose-result-for-first-time-pull.png)
+![Running docker compose with dc-valkey-single.yml](./pics/valkey-docker-compose-result-for-first-time-pull.png)
 
-![The running containers (Valkey and Redis Insight) in Rancher Desktop](./pics/redis_container_in_rancher_desktop.png)
+![The running containers (Valkey and Redis Insight) in Rancher Desktop](./pics/valkey-container-in-rancher-desktop.png)
 
 ### Valkey Bundle
 
@@ -43,6 +43,10 @@ To run the container associated with this instance with `docker compose`, open a
 ```shell
 docker compose -f dc-valkey-bundle.yml up -d
 ```
+
+![Running docker compose with dc-valkey-bundle.yml](./pics/valkey-bundle-docker-compose-result-for-first-time-pull.png)
+
+![The running containers (Valkey and Redis Insight) in Rancher Desktop](./pics/valkey-bundle-container-in-rancher-desktop.png)
 
 ## Accessing Valkey with the CLI in the container
 
@@ -53,7 +57,7 @@ You can now type Valkey command. For example `KEYS *` which output the list of k
 Or maybe you can try `INFO modules` which will list the modules available with your instance.
 You can type `quit` to exit `valkey-cli` and of course `exit` to exit the shell if need be.
 
-![Opening a the Valkey CLI in the Valkey Container](./pics/)
+![Opening the Valkey CLI in the Valkey Container](./pics/)
 
 ## Accessing Valkey from the Redis Insight Web Interface
 
@@ -90,13 +94,9 @@ You land on the _Browser_ page but with the button on the left you can now acces
 ![Accessing the workbench](./pics/accessing_the_workbench.png)
 
 You can also install the desktop client which is an Electron app and works in a similar way.
-The only attention point is for the Redis instance host : it should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ and not `redis`.
+The only attention point is for the Valkey instance host : it should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ and not `redis`.
 
-With the **Redis Insight** included in **Redis Stack**, the steps are quasi-identical : you have to connect on `http:\\localhost:8001` and the database is already configured. You are even directly directed to it.
-
-![Initial screen of Redis Insight with Redis Stack](./pics/initial-screen-of-redis-insight-redis-stack.png)
-
-In each case, **Redis Insight** offers to load sample data in Redis.
+**Redis Insight** offers to load sample data in Redis, but it also works with Valkey.
 
 ![Loading sample data](./pics/load_sample_data_in_redis.png)
 
@@ -104,30 +104,28 @@ In each case, **Redis Insight** offers to load sample data in Redis.
 
 ![Tetris leaderboard example](./pics/loaded_sample_data_tetris_leaderboard.png)
 
-If you want to experiment with Redis but do not readily have available data it is a good way to start.
+If you want to experiment with Valkey but do not readily have available data it is a good way to start.
 
 
 ## Stopping the container
 
 To stop the container, type the following in the shell, from the directory which contains your docker compose file 
 
-* for the `dc-redis-single.yml` docker compose file:
+* for the `dc-valkey-single.yml` docker compose file:
 
 ```shell
-docker compose -f dc-redis-single.yml down
+docker compose -f dc-valkey-single.yml down
 ```
 
-* for the `dc-redis-stack-server.yml` docker compose file:
+![Stopping the container with the Valkey instance](./pics/stopping-your-valkey-single-container.png)
+
+* for the `dc-valkey-bundle.yml.yml` docker compose file:
 
 ```shell
-docker compose -f dc-redis-stack-server.yml down
+docker compose -f dc-valkey-bundle.yml down
 ```
 
-* for the `dc-redis-stack.yml` docker compose file:
-
-```shell
-docker compose -f dc-redis-stack.yml down
-```
+![Stopping the container with the Valkey Bundle instance](./pics/stopping-your-valkey-bundle-container.png)
 
 ## Accessing the Valkey instance with Another Redis Desktop Manager
 
@@ -141,7 +139,7 @@ When you run the executable for the first time, a window similar to the followin
 
 When you click on the button `New Connection` on the left-side top corner, a new window should open.
 In this new window you can enter the settings for this new connection.
-To connect to the dockerised local instance, you will note that the host should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ so to speak. As such the host is not `redis` as it was for the dockerised Redis Insight.
+To connect to the dockerised local instance, you will note that the host should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ so to speak. As such the host is not `valkey` as it was for the dockerised Redis Insight.
 
 ![Creating a new Connection in Another Redis Desktop Manager](./pics/ardm_002_new_connection.png)
 
@@ -152,7 +150,7 @@ When selecting it, you can now access to the Redis instance.
 
 ## Accessing the Valkey instance with the Redis Plugin for Visual Studio Code
 
-There is also an [official Visual Studio Code Plugin](https://redis.io/docs/latest/develop/tools/redis-for-vscode/).
+There is also an [official Visual Studio Code Plugin](https://redis.io/docs/latest/develop/tools/redis-for-vscode/) for Redis that you can use with Valkey.
 
 On the first execution of the plugin you will have to answer some questions about the privacy settings.
 
@@ -173,23 +171,14 @@ You can now access your Redis instance directly from [Visual Studio Code](https:
 
 ## Ressources
 
-* [Redis official site](https://redis.io/)
-  * [Redis configuration](https://redis.io/docs/latest/operate/oss_and_stack/management/config/)
-    * [Configuration file for Redis 7.4](https://raw.githubusercontent.com/redis/redis/7.4/redis.conf)
-    * [Configuration file for Redis 8](https://raw.githubusercontent.com/redis/redis/8.0/redis-full.conf)
-  * [Redis Open Source configuration file example](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/)
-  * [Redis Official GitHub](https://github.com/redis/redis)
-* [Official Redis Docker Image](https://hub.docker.com/_/redis)
-* [Official Redis Stack Server Docker Image](https://hub.docker.com/r/redis/redis-stack-server)
-* [Official Redis Stack Docker Image](https://hub.docker.com/r/redis/redis-stack)
-* [How to Use the Redis Docker Official Image](https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/)
-* [Redis Insight configuration settings](https://redis.io/docs/latest/operate/redisinsight/configuration/)
+* [Valkey](https://valkey.io/)
+* [Valkey - GitHub](https://github.com/valkey-io/valkey)
+* [Valkey - DockerHub](https://hub.docker.com/r/valkey/valkey)
+* [Valkey Bundle](https://valkey.io/topics/valkey-bundle/)
+* [Valkey Bundle - GitHub](https://github.com/valkey-io/valkey-bundle)
+* [Valkey Bundle - DockerHub](https://hub.docker.com/r/valkey/valkey-bundle)
+* [Valkey CLI](https://valkey.io/topics/cli/)
 * [Official Redis Insight Docker Image](https://hub.docker.com/r/redis/RedisInsight)
 * [Another Redis Desktop Manager](https://goanother.com/)
   * [GitHub](https://github.com/qishibo/AnotherRedisDesktopManager)
   * [Releases](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
-* [Creating Redis Cluster using Docker](https://medium.com/commencis/creating-redis-cluster-using-docker-67f65545796d)
-* [Scaling with Redis Cluster](https://redis.io/docs/manual/scaling/)
-* [Redis cluster specification](https://redis.io/docs/reference/cluster-spec/)
-* [docker-redis-cluster](https://github.com/Grokzen/docker-redis-cluster)
-* [How to Setup & Configure a Redis Cluster Easily](https://www.dltlabs.com/blog/how-to-setup-configure-a-redis-cluster-easily-573120)
