@@ -127,8 +127,8 @@ After answering them, you will access the tool in itself.
 
 ![Initial screen of Redis Insight (Redis Community with Redis Insight)](./pics/initial-screen-of-redis-insight.png)
 
-In the case of the Docker Compose file with **Redis Community** and **Redis Insight**, as you can see on the previous screenshot, the instance is pre-configured with a database on `localhost:6379`.
-You can see that the hostname, is `redis`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Redis, and can access it directly with its defined hostname.
+In the case of the Docker Compose file with **Redis Community** and **Redis Insight**, as you can see on the previous screenshot, the instance is pre-configured with a database on `redis:6379`.
+You can see that the hostname, is `redis`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Redis, and can access it directly with its defined hostname. Furthermore, it is the configured _Redis host_ with the environment variable `RI_REDIS_HOST` in the `.env` file.
 
 If you wish, you can edit the alias of the database.
 
