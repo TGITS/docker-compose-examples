@@ -100,10 +100,10 @@ On your first connexion you will be welcomed with some questions about the priva
 
 After answering them, you will access the tool in itself.
 
-![Initial screen of Redis Insight (Redis Community with Redis Insight)](./pics/initial-screen-of-redis-insight.png)
+![Initial screen of Redis Insight](./pics/initial-screen-of-redis-insight.png)
 
 As you can see on the previous screenshot, the instance is pre-configured with a Valkey database on `valkey:6379`.
-You can see that the hostname, is `valkey`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Redis, and can access it directly with its defined hostname. Furthermore, it is the configured _Redis host_ with the environment variable `RI_REDIS_HOST` in the `.env` file.
+You can see that the hostname, is `valkey`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Valkey, and can access it directly with its defined hostname. Furthermore, it is the configured _Redis Host_ with the environment variable `RI_REDIS_HOST` in the `.env` file.
 
 If you wish, you can edit the alias of the database.
 
