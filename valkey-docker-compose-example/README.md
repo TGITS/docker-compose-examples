@@ -38,7 +38,7 @@ If you are on Windows, you can use WSL or if you have the docker engine installe
 
 ### Valkey Bundle
 
-To run the container associated with this instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/valkey-bundle` directory and run the following command :
+To run the container associated with this instance with `docker compose`, open a shell, go to the `valkey-docker-compose-examples/valkey-bundle` directory and run the following command :
 
 ```shell
 docker compose -f dc-valkey-bundle.yml up -d
@@ -60,7 +60,7 @@ docker compose -f dc-valkey-single.yml down
 
 ![Stopping the container with the Valkey instance](./pics/stopping-your-valkey-single-container.png)
 
-* for the `dc-valkey-bundle.yml.yml` docker compose file:
+* for the `dc-valkey-bundle.yml` docker compose file:
 
 ```shell
 docker compose -f dc-valkey-bundle.yml down
@@ -123,7 +123,7 @@ You land on the _Browser_ page but with the button on the left you can now acces
 You can also install the desktop client which is an Electron app and works in a similar way.
 The only attention point is for the Valkey instance host : it should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ and not `valkey`.
 
-**Redis Insight** offers to load sample data in Redis, but it also works with Valkey.
+**Redis Insight** offers to load sample data in **Redis**, but it also works with **Valkey**.
 
 ![Loading sample data](./pics/load_sample_data_in_valkey.png)
 
