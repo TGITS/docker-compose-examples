@@ -148,9 +148,9 @@ To connect to the dockerised local instance, you will note that the host should 
 ![Creating a new Connection in Another Redis Desktop Manager](./pics/ardm_002_new_connection.png)
 
 After clicking on the `OK` button, the new connection is now available.
-When selecting it, you can now access to the Redis instance.
+When selecting it, you can now access the Valkey instance.
 
-![Accessing the local redis instance in Another Redis Desktop Manager](./pics/ardm_003_accessing_the_local_instance.png)
+![Accessing the local Valkey instance in Another Redis Desktop Manager](./pics/ardm_003_accessing_the_local_instance.png)
 
 ## Ressources
 
