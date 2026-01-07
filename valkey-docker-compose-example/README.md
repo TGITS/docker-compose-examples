@@ -38,7 +38,7 @@ If you are on Windows, you can use WSL or if you have the docker engine installe
 
 ### Valkey Bundle
 
-To run the container associated with this instance with `docker compose`, open a shell, go to the `redis-docker-compose-examples/valkey-bundle` directory and run the following command :
+To run the container associated with this instance with `docker compose`, open a shell, go to the `valkey-docker-compose-examples/valkey-bundle` directory and run the following command :
 
 ```shell
 docker compose -f dc-valkey-bundle.yml up -d
@@ -60,7 +60,7 @@ docker compose -f dc-valkey-single.yml down
 
 ![Stopping the container with the Valkey instance](./pics/stopping-your-valkey-single-container.png)
 
-* for the `dc-valkey-bundle.yml.yml` docker compose file:
+* for the `dc-valkey-bundle.yml` docker compose file:
 
 ```shell
 docker compose -f dc-valkey-bundle.yml down
@@ -100,10 +100,10 @@ On your first connexion you will be welcomed with some questions about the priva
 
 After answering them, you will access the tool in itself.
 
-![Initial screen of Redis Insight (Redis Community with Redis Insight)](./pics/initial-screen-of-redis-insight.png)
+![Initial screen of Redis Insight](./pics/initial-screen-of-redis-insight.png)
 
 As you can see on the previous screenshot, the instance is pre-configured with a Valkey database on `valkey:6379`.
-You can see that the hostname, is `valkey`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Redis, and can access it directly with its defined hostname. Furthermore, it is the configured _Redis host_ with the environment variable `RI_REDIS_HOST` in the `.env` file.
+You can see that the hostname, is `valkey`, this the host name defined in Docker Compose : the instance of Redis Insight is on the _same network_ in docker as Valkey, and can access it directly with its defined hostname. Furthermore, it is the configured _Redis Host_ with the environment variable `RI_REDIS_HOST` in the `.env` file.
 
 If you wish, you can edit the alias of the database.
 
@@ -123,7 +123,7 @@ You land on the _Browser_ page but with the button on the left you can now acces
 You can also install the desktop client which is an Electron app and works in a similar way.
 The only attention point is for the Valkey instance host : it should be `127.0.0.1` or `localhost`, as you access the instance from _outside docker_ and not `valkey`.
 
-**Redis Insight** offers to load sample data in Redis, but it also works with Valkey.
+**Redis Insight** offers to load sample data in **Redis**, but it also works with **Valkey**.
 
 ![Loading sample data](./pics/load_sample_data_in_valkey.png)
 
@@ -148,9 +148,9 @@ To connect to the dockerised local instance, you will note that the host should 
 ![Creating a new Connection in Another Redis Desktop Manager](./pics/ardm_002_new_connection.png)
 
 After clicking on the `OK` button, the new connection is now available.
-When selecting it, you can now access to the Redis instance.
+When selecting it, you can now access the Valkey instance.
 
-![Accessing the local redis instance in Another Redis Desktop Manager](./pics/ardm_003_accessing_the_local_instance.png)
+![Accessing the local Valkey instance in Another Redis Desktop Manager](./pics/ardm_003_accessing_the_local_instance.png)
 
 ## Ressources
 
